@@ -22,6 +22,7 @@ function App() {
     </Routes>
     <LandingContainer/>
     <LoserBoardContainer/>
+    <SinglePlayerContainer/>
    
 
     </div>
