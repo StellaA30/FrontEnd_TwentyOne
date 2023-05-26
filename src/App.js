@@ -5,6 +5,7 @@ import MultiPlayerContainer from "./containers/MultiPlayerContainer";
 import GameContainer from "./containers/GameContainer";
 import LandingContainer from "./containers/LandingContainer";
 import LoserBoardContainer from "./containers/LoserBoardContainer";
+import PlayerComponent from "./components/PlayerComponent";
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
     <BrowserRouter>
     <div className="App">
       <h1>Hello BNTA World</h1>
+      <p> Hiii guysssss its meeeeee</p>
       <Routes>
         <Route path='/singlePlayer' element={<SinglePlayerContainer/>} />
         <Route path='/MultiPlayer' element={<MultiPlayerContainer/>} />
@@ -20,6 +22,8 @@ function App() {
     </Routes>
     <LandingContainer/>
     <LoserBoardContainer/>
+    <SinglePlayerContainer/>
+   
 
     </div>
   </BrowserRouter>
