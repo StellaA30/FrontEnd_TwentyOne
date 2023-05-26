@@ -12,18 +12,18 @@ const LooserBoardContainer = () => {
         fetchLoserBoard()
     }, [])
 
-    const loserBoardItems = loserBoard.map((player) => { 
-        return <li>{player} </li>
+    loserBoard.sort((a,b) => a.gamesLost - b.gamesLost);
+
+    const loserBoardItems = loserBoard.map((player, index) => { 
+        return <li key={index}>{player.name} has lost {player.gamesLost} games. </li>
     })
 
     return ( 
         <>
-        
          <h3> Hello from loserboard!!</h3>
          <ol>
             {loserBoardItems}
          </ol>
-        
         </>
      );
 }
