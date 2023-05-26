@@ -9,18 +9,22 @@ import PlayerComponent from "./components/PlayerComponent";
 
 function App() {
 
+  const singlePlayerRoute = () => {
+    return <Route path='/singlePlayer' element={<SinglePlayerContainer/>} />
+
+  }
+
 
   return (
     <BrowserRouter>
     <div className="App">
       <h1>Hello BNTA World</h1>
-      <p> Hiii guysssss its meeeeee</p>
       <Routes>
-        <Route path='/singlePlayer' element={<SinglePlayerContainer/>} />
+        {singlePlayerRoute}    
         <Route path='/MultiPlayer' element={<MultiPlayerContainer/>} />
         <Route path='/gamePage' element={<GameContainer/>} />
     </Routes>
-    <LandingContainer/>
+    <LandingContainer singlePlayerRoute={singlePlayerRoute}/>
     <LoserBoardContainer/>
     <SinglePlayerContainer/>
    
