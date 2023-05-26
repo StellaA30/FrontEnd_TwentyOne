@@ -13,6 +13,7 @@ function App() {
     <BrowserRouter>
     <div className="App">
       <h1>Hello BNTA World</h1>
+      <p> Hiii guysssss its meeeeee</p>
       <Routes>
         <Route path='/singlePlayer' element={<SinglePlayerContainer/>} />
         <Route path='/MultiPlayer' element={<MultiPlayerContainer/>} />
