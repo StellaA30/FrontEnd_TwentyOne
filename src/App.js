@@ -5,6 +5,7 @@ import MultiPlayerContainer from "./containers/MultiPlayerContainer";
 import GameContainer from "./containers/GameContainer";
 import LandingContainer from "./containers/LandingContainer";
 import LoserBoardContainer from "./containers/LoserBoardContainer";
+import PlayerComponent from "./components/PlayerComponent";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
     </Routes>
     <LandingContainer/>
     <LoserBoardContainer/>
+   
 
     </div>
   </BrowserRouter>
