@@ -15,11 +15,11 @@ const LandingContainer = ({playerRoute}) => {
         event.preventDefault();
 
         if (selectedMode === "singlePlayer") {
-            singlePlayerRoute(selectedMode)
+            playerRoute(selectedMode);
         }
 
         if (selectedMode === "multiPlayer") {
-          singlePlayerRoute(selectedMode)
+          playerRoute(selectedMode);
       }
 };
 

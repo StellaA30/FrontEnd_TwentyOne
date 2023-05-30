@@ -19,7 +19,7 @@ function App() {
   return (
     <>
       <h1>Hello BNTA World</h1>
-    <LandingContainer singlePlayerRoute={playerRoute}/>
+    <LandingContainer playerRoute={playerRoute}/>
     <LoserBoardContainer/>
     </>
   );
