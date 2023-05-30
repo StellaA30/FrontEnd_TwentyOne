@@ -1,11 +1,17 @@
+import { Outlet } from "react-router-dom";
 import PlayerComponent from "../components/PlayerComponent"
 
-const SinglePlayerContainer = () => {
+const SinglePlayerContainer = ({activePlayer}) => {
+
+    // Input player name
+    // Player to select the game mode
+    // Create a game for the player based on the selected mode
+
     return ( 
         <>
-        <h2> hi there !</h2>
+        <h2> Single Player</h2>
         <PlayerComponent/>
-        
+        <Outlet/>
         </>
      );
 }
