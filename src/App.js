@@ -12,6 +12,8 @@ import { Children, useEffect, useState } from "react";
 function App() {
 
   const [activePlayer, setActivePlayer] = useState([]);
+  const [leadPlayer, setLeadPlayer] = useState(null);
+  const [newPlayer, setNewPlayer] = useState("");
 
   useEffect(()=>{
     const fetchPlayers = async () => {
@@ -22,21 +24,47 @@ function App() {
 
     fetchPlayers()
   },[])
+
+  const postPlayer = async (newPlayer) => {
+    const response = await fetch("http://localhost:8080/players", {
+      method: "POST",
+      headers: {"Content-Type" : "application/json"},
+      body: JSON.stringify(newPlayer)
+    });
+    const savedPlayer = await response.json();
+    setLeadPlayer(savedPlayer);
+  }
+  
+  const logIn = () => {
+    for (let i = 0; i < activePlayer.length; i++){
+      if(activePlayer[i].name === newPlayer){
+        setLeadPlayer(activePlayer[i]);
+      } 
+      // need to resolve promise when adding a new player
+    } if (!leadPlayer){
+      const registerPlayer = postPlayer(newPlayer);
+      setActivePlayer([...activePlayer, registerPlayer]);
+    }
+  }
   
   const router = createBrowserRouter ([
     {
       path: "/", 
-      element: <LandingContainer activePlayer={activePlayer}/>,
+      element: <LandingContainer/>,
       children:[
         {
           path: "/logIn", 
-          element: <LogInContainer/>
+          element: <LogInContainer 
+          newPlayer={newPlayer} 
+          setNewPlayer={setNewPlayer}
+          logIn={logIn}
+          />
         }
       ], 
     },
     {
       path: "singlePlayer", 
-      element: <SinglePlayerContainer/>,
+      element: <SinglePlayerContainer leadPlayer={leadPlayer}/>,
     },
     {
       path: "multiPlayer", 
@@ -52,9 +80,6 @@ function App() {
     <>
     <h1>21 Game</h1>
     <RouterProvider router={router} />
-    {/* <LandingContainer 
-    // playerRoute={playerRoute} 
-    activePlayer={activePlayer}/> */}
     <LoserBoardContainer/>
     
     </>

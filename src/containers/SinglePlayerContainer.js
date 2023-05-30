@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import PlayerComponent from "../components/PlayerComponent"
 
-const SinglePlayerContainer = ({activePlayer}) => {
+const SinglePlayerContainer = ({leadPlayer}) => {
 
     // Input player name
     // Player to select the game mode
@@ -9,9 +9,8 @@ const SinglePlayerContainer = ({activePlayer}) => {
 
     return ( 
         <>
-        <h2> Single Player</h2>
+        <h2> Single Player </h2>
         <PlayerComponent/>
-        <Outlet/>
         </>
      );
 }
