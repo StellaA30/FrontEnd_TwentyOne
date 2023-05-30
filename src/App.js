@@ -37,22 +37,14 @@ function App() {
     {
       path: "singlePlayer", 
       element: <SinglePlayerContainer/>,
-      children: [
-        {
-          path: "gamePage", 
-          element: <GameContainer/>
-        }
-      ]
     },
     {
       path: "multiPlayer", 
       element: <MultiPlayerContainer/>,
-      children: [
-        {
-          path: "gamePage", 
-          element: <GameContainer/>
-        }
-      ]
+    },
+    {
+      path: "gamePage", 
+      element: <GameContainer/>
     }
   ]);
 
