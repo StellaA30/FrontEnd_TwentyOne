@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useNavigate, Outlet } from "react-router-dom";
+import "../CSSFiles/LandingContainer.css";
 
 const LandingContainer = () => {
   const [selectedMode, setSelectedMode] = useState(null);
+  const [displayButton, setDisplayButton] = useState(false);
   const navigate = useNavigate();
 
   const handleGameMode = (event) => {
@@ -28,15 +30,14 @@ const LandingContainer = () => {
 
   const handleClick = () => {
     navigate("/logIn");
-  }
+    setDisplayButton(!displayButton);
+  };
 
   return (
     <>
-      <button onClick={handleClick}> Log in/Register </button>
-      <Outlet/>
-      <h4>How to play:</h4>
-      <p>Write rules in here:</p>
-      <form onSubmit={handleFormSubmit}>
+      {!displayButton && <button onClick={handleClick}>Log in/Register</button>}
+      <Outlet />
+      <form className="form" onSubmit={handleFormSubmit}>
         <select
           onChange={handleGameMode}
           name="game mode"
@@ -46,8 +47,27 @@ const LandingContainer = () => {
           <option value="singlePlayer">Single</option>
           <option value="multiPlayer">Multiplayer</option>
         </select>
-        <button type="submit">Submit</button>
+        <button type="submit"> Submit </button>
       </form>
+      <section className="rules">
+        <h4>How to play:</h4>
+        <ol className="rules">
+          <li>
+            {" "}
+            Progress through the game by counting up until you get to 21.{" "}
+          </li>
+          <li> When you see your name submit a number between 1 and 3. </li>
+          <li>
+            {" "}
+            The aim of the game is to avoid being the person to reach 21.{" "}
+          </li>
+          <li>
+            {" "}
+            If you are the lucky person to get to 21, you claim the throne as
+            THE loser.{" "}
+          </li>
+        </ol>
+      </section>
     </>
   );
 };
