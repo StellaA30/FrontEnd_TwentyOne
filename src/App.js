@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
 import './App.css';
 import SinglePlayerContainer from "./containers/SinglePlayerContainer";
 import MultiPlayerContainer from "./containers/MultiPlayerContainer";
@@ -7,30 +7,24 @@ import LandingContainer from "./containers/LandingContainer";
 import LoserBoardContainer from "./containers/LoserBoardContainer";
 import PlayerComponent from "./components/PlayerComponent";
 
-function App() {
+function App({router}) {
 
   const singlePlayerRoute = () => {
-    return <Route path='/singlePlayer' element={<SinglePlayerContainer/>} />
-
+    // return <Route path='/singlePlayer' element={<SinglePlayerContainer/>} />
+    // router.SinglePlayerContainer();
+    <Link to="/singlePlayer"></Link>
   }
 
 
   return (
-    <BrowserRouter>
+    // <BrowserRouter>
     <div className="App">
       <h1>Hello BNTA World</h1>
-      <Routes>
-        {singlePlayerRoute}    
-        <Route path='/MultiPlayer' element={<MultiPlayerContainer/>} />
-        <Route path='/gamePage' element={<GameContainer/>} />
-    </Routes>
     <LandingContainer singlePlayerRoute={singlePlayerRoute}/>
     <LoserBoardContainer/>
-    <SinglePlayerContainer/>
-   
-
+    {/* <SinglePlayerContainer/> */}
     </div>
-  </BrowserRouter>
+  // </BrowserRouter>
        
   );
 }
