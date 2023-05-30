@@ -12,7 +12,7 @@ import { Children, useEffect, useState } from "react";
 function App() {
 
   const [activePlayer, setActivePlayer] = useState([]);
-  const [leadPlayer, setLeadPlayer] = useState([]);
+  const [leadPlayer, setLeadPlayer] = useState(null);
   const [newPlayer, setNewPlayer] = useState("");
 
   useEffect(()=>{
@@ -25,14 +25,27 @@ function App() {
     fetchPlayers()
   },[])
 
+  const postPlayer = async (newPlayer) => {
+    const response = await fetch("http://localhost:8080/players", {
+      method: "POST",
+      headers: {"Content-Type" : "application/json"},
+      body: JSON.stringify(newPlayer)
+    });
+    const savedPlayer = await response.json();
+    setLeadPlayer(savedPlayer);
+  }
+  
   const logIn = () => {
     for (let i = 0; i < activePlayer.length; i++){
       if(activePlayer[i].name === newPlayer){
         setLeadPlayer(activePlayer[i]);
-      }
+      } 
+      // need to resolve promise when adding a new player
+    } if (!leadPlayer){
+      const registerPlayer = postPlayer(newPlayer);
+      setActivePlayer([...activePlayer, registerPlayer]);
     }
   }
-  
   
   const router = createBrowserRouter ([
     {
