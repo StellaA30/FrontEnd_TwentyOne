@@ -1,6 +1,6 @@
 import PlayerComponent from "../components/PlayerComponent"
 
-const SinglePlayerContainer = () => {
+const SinglePlayerContainer = ({activePlayer}) => {
 
     // Input player name
     // Player to select the game mode
