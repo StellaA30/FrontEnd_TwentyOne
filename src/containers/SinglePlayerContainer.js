@@ -1,7 +1,8 @@
 import { useState } from "react";
 import PlayerComponent from "../components/PlayerComponent"
 
-const SinglePlayerContainer = ({activePlayer, onFormSubmit}) => {
+
+const SinglePlayerContainer = ({leadPlayer, onFormSubmit}) => {
 
     const [selectedMode, setSelectedMode] = useState(null);
 
@@ -22,6 +23,7 @@ const handleFormSubmit = (event) => {
    
 
 
+
     return ( 
         <>
         {/* <h2> {activePlayer.name}</h2> */}
@@ -34,6 +36,7 @@ const handleFormSubmit = (event) => {
         </select>
         <button type ="submit">Start game!</button>
       </form>
+
         <PlayerComponent/>
         </>
      );
