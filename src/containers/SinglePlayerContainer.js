@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import PlayerComponent from "../components/PlayerComponent"
 
 const SinglePlayerContainer = ({activePlayer}) => {
@@ -10,7 +11,7 @@ const SinglePlayerContainer = ({activePlayer}) => {
         <>
         <h2> Single Player</h2>
         <PlayerComponent/>
-        
+        <Outlet/>
         </>
      );
 }
