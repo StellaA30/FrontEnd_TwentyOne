@@ -1,9 +1,8 @@
 import { useState } from "react";
 import PlayerComponent from "../components/PlayerComponent"
 
-const SinglePlayerContainer = ({activePlayer}) => {
+const SinglePlayerContainer = ({activePlayer, onFormSubmit}) => {
 
-    const [games, setGames] = useState(null);
     const [selectedMode, setSelectedMode] = useState(null);
 
     const handleGameMode = (event) => {
@@ -13,22 +12,15 @@ const SinglePlayerContainer = ({activePlayer}) => {
 
 const handleFormSubmit = (event) => {
     event.preventDefault();
+    onFormSubmit(1, selectedMode);
 }
 
     
-    // Input player name
-    // Player to select the game mode
-    // Create a game for the player based on the selected mode
+    // get active player's id
+    // use the player's id and gameMode from dropdown list to postGame
+    // use new game Id to startNew game 
+   
 
-    const postGame = async(playerId, gameMode) => {
-        const url = await URL (`http://localhost:8080/games?playerId=${playerId}&gameType=${gameMode}`);
-        url.searchParams.append('param', JSON.stringify(playerId, gameMode));
-
-        const response = await fetch(url, {
-            method: "POST",
-            headers: {'Content-Type': 'application/json'}
-        });    
-    }
 
     return ( 
         <>
