@@ -1,6 +1,6 @@
 import { useState, useEffect} from "react";
 
-const LooserBoardContainer = () => {
+const LoserBoardContainer = () => {
     const[loserBoard,setLoserBoard] = useState([]);
 
     useEffect(() => {
@@ -28,4 +28,4 @@ const LooserBoardContainer = () => {
      );
 }
  
-export default LooserBoardContainer;
+export default LoserBoardContainer;
