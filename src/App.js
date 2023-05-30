@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import './App.css';
 import SinglePlayerContainer from "./containers/SinglePlayerContainer";
 import MultiPlayerContainer from "./containers/MultiPlayerContainer";
@@ -7,25 +7,21 @@ import LandingContainer from "./containers/LandingContainer";
 import LoserBoardContainer from "./containers/LoserBoardContainer";
 import PlayerComponent from "./components/PlayerComponent";
 
-function App({router}) {
+function App() {
 
-  const singlePlayerRoute = () => {
-    // return <Route path='/singlePlayer' element={<SinglePlayerContainer/>} />
-    // router.SinglePlayerContainer();
-    <Link to="/singlePlayer"></Link>
+  const navigate = useNavigate();
+
+  const singlePlayerRoute = (selectedMode) => {
+    navigate(selectedMode);
   }
 
 
   return (
-    // <BrowserRouter>
-    <div className="App">
+    <>
       <h1>Hello BNTA World</h1>
     <LandingContainer singlePlayerRoute={singlePlayerRoute}/>
     <LoserBoardContainer/>
-    {/* <SinglePlayerContainer/> */}
-    </div>
-  // </BrowserRouter>
-       
+    </>
   );
 }
 
