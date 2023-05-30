@@ -1,15 +1,15 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const LandingContainer = ({playerRoute}) => {
+const LandingContainer = ({activePlayer}) => {
 
-    const [selectedMode, setSelectedMode] = useState(null)
+    const [selectedMode, setSelectedMode] = useState(null);
+    const navigate = useNavigate();
 
     const handleGameMode = (event) => {
-        // const selectedMode = event.target[event.target.selectedIndex].text;
         const selectedMode = event.target.value;
         setSelectedMode(selectedMode);
 };
-   
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
@@ -21,7 +21,11 @@ const LandingContainer = ({playerRoute}) => {
         if (selectedMode === "multiPlayer") {
           playerRoute(selectedMode);
       }
-};
+    };
+
+    const playerRoute = (selectedMode) => {
+      navigate(selectedMode);
+    }
 
   return (
     <>

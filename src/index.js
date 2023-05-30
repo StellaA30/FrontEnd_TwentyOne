@@ -11,32 +11,34 @@ import LogInContainer from './containers/LogInContainer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-const router = createBrowserRouter ([
-  {
-    path: "/", 
-    element: <App/>
-  }, 
-  {
-    path: "logIn", 
-    element: <LogInContainer/>
-  }, 
-  {
-    path: "singlePlayer", 
-    element: <SinglePlayerContainer/>
-  }, 
-  {
-    path: "multiPlayer", 
-    element: <MultiPlayerContainer/>
-  }, 
-  {
-    path: "gamePage", 
-    element: <GameContainer/>
-  },
-])
+// const router = createBrowserRouter ([
+//   {
+//     path: "/", 
+//     element: <App/>
+//   }, 
+//   {
+//     path: "logIn", 
+//     element: <LogInContainer/>
+//   }, 
+//   {
+//     path: "singlePlayer", 
+//     element: <SinglePlayerContainer/>,
+//     props: 'activePlayer'
+//   }, 
+//   {
+//     path: "multiPlayer", 
+//     element: <MultiPlayerContainer/>
+//   }, 
+//   {
+//     path: "gamePage", 
+//     element: <GameContainer/>
+//   },
+// ])
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <App/>
+    {/* <RouterProvider router={router} /> */}
   </React.StrictMode>
 );
 
