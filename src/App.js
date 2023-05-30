@@ -11,7 +11,7 @@ function App() {
 
   const navigate = useNavigate();
 
-  const singlePlayerRoute = (selectedMode) => {
+  const playerRoute = (selectedMode) => {
     navigate(selectedMode);
   }
 
@@ -19,7 +19,7 @@ function App() {
   return (
     <>
       <h1>Hello BNTA World</h1>
-    <LandingContainer singlePlayerRoute={singlePlayerRoute}/>
+    <LandingContainer singlePlayerRoute={playerRoute}/>
     <LoserBoardContainer/>
     </>
   );

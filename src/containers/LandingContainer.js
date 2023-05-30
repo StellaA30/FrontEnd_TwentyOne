@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const LandingContainer = ({singlePlayerRoute}) => {
+const LandingContainer = ({playerRoute}) => {
 
     const [selectedMode, setSelectedMode] = useState(null)
 
