@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const GameContainer = ({leadPlayer, game}) => {
+const GameContainer = ({leadPlayer, game, setGame}) => {
 // counter for "ball" -> this will increment depending on user input or computer input
 // user input field which will have an onClick which will increment the counter
 // useEffect will watch for this change this will also send a put request to the API to retrieve the Computer guess
@@ -9,25 +9,33 @@ const GameContainer = ({leadPlayer, game}) => {
 // set state that triggers the changes on the page, flicks between user and computer guesses
 // state to check if game.complete is true -> if ball = 21, set state to true and print game.message
 
-const [userInput, setUserInput] = useState (0)
-const [counter, setCounter] =useState (0)
+const [userInput, setUserInput] = useState(0)
+const [counter, setCounter] = useState(0)
 
 
 
 const handleChange = (event) => {
     setUserInput(event.target.value)
-    // const userInput = 
-
 }
 
 const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log(event.target.value);
     setCounter((prev) => {
-        return prev += parseInt(userInput);
+        return prev += parseInt(userInput)
     })
+    updateGame(game);
 }
 
+const updateGame = async (updatedGame) => {
+    const response = await fetch(`http://localhost:8080/games/${game.id}?playerId=${leadPlayer.id}&guess=${userInput}`, {
+        method:"PUT",
+        headers:{"Content-Type" : "application/json"},
+        body: JSON.stringify(updatedGame)
+    })
+    const jsonData = response.json;
+    updatedGame = jsonData;
+    setGame(updatedGame);
+}
 
 
     return ( 

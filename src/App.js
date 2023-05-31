@@ -113,7 +113,7 @@ const  startNewGame = async(gameId) => {
     },
     {
       path: "gamePage",
-      element: <GameContainer leadPlayer={leadPlayer} game={game} />,
+      element: <GameContainer leadPlayer={leadPlayer} game={game} setGame={setGame} />,
     },
   ]);
 
