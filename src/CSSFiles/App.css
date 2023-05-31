@@ -1,0 +1,22 @@
+body {
+  background-color: black;
+  color: white;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+button {
+  font-size: 16px;
+  background-color: #453f3d;
+  color: black;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 3px solid;
+  padding: 0.25em 0.5em;
+}
+
+input {
+  padding: 0.25em 0.5em;
+  border: 3px solid;
+  font-size: 16px;
+}

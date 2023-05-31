@@ -1,9 +1,20 @@
-const PlayerComponent = () => {
+import { useState } from "react";
+
+const PlayerComponent = ({newPlayer, setNewPlayer}) => {
+
+    const handleChange = (event) =>{
+        setNewPlayer(event.target.value)
+    }
+
     return ( 
         <>
-            <h4> Hello from Player PlayerComponent </h4>
-        
-        
+            <input
+            type="text"
+            placeholder="enter player name"
+            name="name"
+            value={newPlayer}
+            onChange={handleChange}
+            />
         </>
      );
 }
