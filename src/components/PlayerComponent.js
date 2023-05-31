@@ -1,8 +1,6 @@
 import { useState } from "react";
 
-const PlayerComponent = () => {
-
-    const [newPlayer, setNewPlayer] = useState("");
+const PlayerComponent = ({newPlayer, setNewPlayer}) => {
 
     const handleChange = (event) =>{
         setNewPlayer(event.target.value)
@@ -17,8 +15,6 @@ const PlayerComponent = () => {
             value={newPlayer}
             onChange={handleChange}
             />
-        
-        
         </>
      );
 }

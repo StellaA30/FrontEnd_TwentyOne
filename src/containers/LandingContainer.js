@@ -1,45 +1,73 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Outlet } from "react-router-dom";
+import "../CSSFiles/LandingContainer.css";
 
-const LandingContainer = ({activePlayer}) => {
+const LandingContainer = () => {
+  const [selectedMode, setSelectedMode] = useState(null);
+  const [displayButton, setDisplayButton] = useState(false);
+  const navigate = useNavigate();
 
-    const [selectedMode, setSelectedMode] = useState(null);
-    const navigate = useNavigate();
+  const handleGameMode = (event) => {
+    const selectedMode = event.target.value;
+    setSelectedMode(selectedMode);
+  };
 
-    const handleGameMode = (event) => {
-        const selectedMode = event.target.value;
-        setSelectedMode(selectedMode);
-};
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
 
-    const handleFormSubmit = (event) => {
-        event.preventDefault();
-
-        if (selectedMode === "singlePlayer") {
-            playerRoute(selectedMode);
-        }
-
-        if (selectedMode === "multiPlayer") {
-          playerRoute(selectedMode);
-      }
-    };
-
-    const playerRoute = (selectedMode) => {
-      navigate(selectedMode);
+    if (selectedMode === "singlePlayer") {
+      playerRoute(selectedMode);
     }
+
+    if (selectedMode === "multiPlayer") {
+      playerRoute(selectedMode);
+    }
+  };
+
+  const playerRoute = (selectedMode) => {
+    navigate(selectedMode);
+  };
+
+  const handleClick = () => {
+    navigate("/logIn");
+    setDisplayButton(!displayButton);
+  };
 
   return (
     <>
-      <h3>Hello from Landing Page </h3>
-      <h4>How to play:</h4>
-      <p>Write rules in here:</p>
-      <form onSubmit={handleFormSubmit}>
-      <select onChange={handleGameMode}  name="game mode" defaultValue="game mode">
-        <option disabled-value="game mode">Game mode</option>
-        <option value="singlePlayer">Single</option>
-        <option value="multiPlayer">Multiplayer</option>
-      </select>
-      <button type ="submit">Submit</button>
+      {!displayButton && <button onClick={handleClick}>Log in/Register</button>}
+      <Outlet />
+      <form className="form" onSubmit={handleFormSubmit}>
+        <select
+          onChange={handleGameMode}
+          name="game mode"
+          defaultValue="game mode"
+        >
+          <option disabled-value="game mode">Game mode</option>
+          <option value="singlePlayer">Single</option>
+          <option value="multiPlayer">Multiplayer</option>
+        </select>
+        <button type="submit"> Submit </button>
       </form>
+      <section className="rules">
+        <h4>How to play:</h4>
+        <ol className="rules">
+          <li>
+            {" "}
+            Progress through the game by counting up until you get to 21.{" "}
+          </li>
+          <li> When you see your name submit a number between 1 and 3. </li>
+          <li>
+            {" "}
+            The aim of the game is to avoid being the person to reach 21.{" "}
+          </li>
+          <li>
+            {" "}
+            If you are the lucky person to get to 21, you claim the throne as
+            THE loser.{" "}
+          </li>
+        </ol>
+      </section>
     </>
   );
 };
