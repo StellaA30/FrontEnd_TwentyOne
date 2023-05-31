@@ -12,7 +12,7 @@ const LoserBoardContainer = () => {
     fetchLoserBoard();
   }, []);
 
-  loserBoard.sort((a, b) => a.gamesLost - b.gamesLost);
+  loserBoard.sort((a, b) => a.gamesLost.sort - b.gamesLost.sort);
 
   const loserBoardItems = loserBoard.map((player, index) => {
     return (
