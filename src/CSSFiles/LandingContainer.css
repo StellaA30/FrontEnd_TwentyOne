@@ -1,0 +1,28 @@
+.rules {
+  background-color: #2a2727;
+  margin: 20px;
+  padding: 10px;
+}
+
+.rules > h4 {
+  font-size: 20px;
+  margin: 0px;
+}
+
+.rules > p {
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+.form > select {
+  font-size: 16px;
+  text-decoration: none;
+  border: 3px solid;
+  padding: 0.25em 0.5em;
+}
+
+.rules > ol {
+  font-size: 14px;
+  text-align: justify;
+  padding-top: 0;
+}

@@ -1,16 +1,14 @@
-import { useNavigate, createBrowserRouter, RouterProvider  } from "react-router-dom";
-import './App.css';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./CSSFiles/App.css";
 import SinglePlayerContainer from "./containers/SinglePlayerContainer";
 import MultiPlayerContainer from "./containers/MultiPlayerContainer";
 import GameContainer from "./containers/GameContainer";
 import LandingContainer from "./containers/LandingContainer";
 import LoserBoardContainer from "./containers/LoserBoardContainer";
-import PlayerComponent from "./components/PlayerComponent";
 import LogInContainer from "./containers/LogInContainer";
-import { Children, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
-
   const [activePlayer, setActivePlayer] = useState([]);
 
   const [game, setGame] = useState(null);
@@ -20,7 +18,7 @@ function App() {
   const [newPlayer, setNewPlayer] = useState("");
 
 
-
+  useEffect(() => {
 //for single player container 
   const postGame = async(playerId, gameMode) => {
     // const url = await URL (`http://localhost:8080/games?playerId=${playerId}&gameType=${gameMode}`);
@@ -48,75 +46,81 @@ const  startNewGame = async(gameId) => {
 }
 
   useEffect(()=>{
+
     const fetchPlayers = async () => {
-      const response = await fetch("http://localhost:8080/players")
+      const response = await fetch("http://localhost:8080/players");
       const jsonData = await response.json();
       setActivePlayer(jsonData);
-    }
+    };
 
-    fetchPlayers()
-  },[])
+    fetchPlayers();
+  }, []);
 
   const postPlayer = async (newPlayer) => {
     const response = await fetch("http://localhost:8080/players", {
       method: "POST",
-      headers: {"Content-Type" : "application/json"},
-      body: JSON.stringify(newPlayer)
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newPlayer),
     });
     const savedPlayer = await response.json();
+    // adapt line below to a ternary operator if you need to add more players
     setLeadPlayer(savedPlayer);
-  }
-  
+    setActivePlayer([...activePlayer, savedPlayer]);
+  };
+
   const logIn = () => {
-    for (let i = 0; i < activePlayer.length; i++){
-      if(activePlayer[i].name === newPlayer){
-        setLeadPlayer(activePlayer[i]);
+    let potentialPlayer = null;
+
+    for (let i = 0; i < activePlayer.length; i++) {
+      if (activePlayer[i].name === newPlayer) {
+        potentialPlayer = activePlayer[i];
       } 
-      // need to resolve promise when adding a new player
-    } if (!leadPlayer){
-      const registerPlayer = postPlayer(newPlayer);
-      setActivePlayer([...activePlayer, registerPlayer]);
     }
-  }
-  
-  const router = createBrowserRouter ([
+
+    if (!potentialPlayer) {
+      postPlayer(newPlayer);
+    } else {
+      setLeadPlayer(potentialPlayer);
+    }
+    
+  };
+
+  const router = createBrowserRouter([
     {
-      path: "/", 
-      element: <LandingContainer/>,
-      children:[
+      path: "/",
+      element: <LandingContainer />,
+      children: [
         {
-          path: "/logIn", 
-          element: <LogInContainer 
-          newPlayer={newPlayer} 
-          setNewPlayer={setNewPlayer}
-          logIn={logIn}
-          />
-        }
-      ], 
+          path: "/logIn",
+          element: (
+            <LogInContainer
+              newPlayer={newPlayer}
+              setNewPlayer={setNewPlayer}
+              logIn={logIn}
+            />
+          ),
+        },
+      ],
     },
     {
       path: "singlePlayer", 
-
       element: <SinglePlayerContainer leadPlayer={leadPlayer} onFormSubmit={postGame}/>,
-
     },
     {
-      path: "multiPlayer", 
-      element: <MultiPlayerContainer/>,
+      path: "multiPlayer",
+      element: <MultiPlayerContainer />,
     },
     {
-      path: "gamePage", 
-      element: <GameContainer/>
-    }
+      path: "gamePage",
+      element: <GameContainer leadPlayer={leadPlayer} />,
+    },
   ]);
 
   return (
     <>
-    <h1>21 Game</h1>
-    <RouterProvider router={router} />
-    <LoserBoardContainer/>
-
-    
+      <h1>21 Game</h1>
+      <RouterProvider router={router} />
+      <LoserBoardContainer />
     </>
   );
 }
