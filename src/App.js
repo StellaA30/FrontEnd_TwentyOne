@@ -36,8 +36,6 @@ function App() {
 
   };
 
-
-
 const  startNewGame = async(gameId) => {
     const response = await fetch(`http://localhost:8080/games/${gameId}`, {
       method: "PATCH",
@@ -46,6 +44,13 @@ const  startNewGame = async(gameId) => {
     });
     const gameData = await response.json();
     setGame(gameData);
+}
+
+// Single player method for selection new/existing game
+const gameOptionList = (optionType) => {
+  if(optionType === "new game") {
+    optionType();
+  }
 }
 
   useEffect(()=>{
