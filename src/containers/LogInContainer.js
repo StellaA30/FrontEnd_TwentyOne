@@ -22,7 +22,8 @@ const LogInContainer = ({ newPlayer, setNewPlayer, logIn }) => {
       </p>
       <form onSubmit={handleFormSubmit}>
         <PlayerComponent newPlayer={newPlayer} setNewPlayer={setNewPlayer} />
-        {!displayButton && <button type="submit"> Log In </button>}
+        {!displayButton && 
+        <button type="submit"> Log In </button>}
       </form>
     </>
   );

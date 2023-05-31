@@ -5,7 +5,7 @@ const GameContainer = ({leadPlayer, game, setGame}) => {
 const [userInput, setUserInput] = useState(0);
 const [counter, setCounter] = useState(0);
 const [message, setMessage] = useState("guess a number");
-const [displayForm, setDisplayForm] = useState(true);
+const [displayForm, setDisplayForm] = useState(false);
 
 const handleChange = (event) => {
     setUserInput(event.target.value)
