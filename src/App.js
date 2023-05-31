@@ -18,7 +18,7 @@ function App() {
   const [newPlayer, setNewPlayer] = useState("");
 
 
-  useEffect(() => {
+  // useEffect(() => {
 //for single player container 
   const postGame = async(playerId, gameMode) => {
     // const url = await URL (`http://localhost:8080/games?playerId=${playerId}&gameType=${gameMode}`);
@@ -33,8 +33,10 @@ function App() {
     const newGameId = newGame.message.match("[0-9]+")[0];
     console.log(newGameId);
     startNewGame(newGameId);
-}
-  })
+
+  };
+
+
 
 const  startNewGame = async(gameId) => {
     const response = await fetch(`http://localhost:8080/games/${gameId}`, {
