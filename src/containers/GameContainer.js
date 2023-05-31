@@ -1,8 +1,51 @@
-const GameContainer = () => {
+import { useState } from "react";
+
+const GameContainer = ({leadPlayer, game}) => {
+// counter for "ball" -> this will increment depending on user input or computer input
+// user input field which will have an onClick which will increment the counter
+// useEffect will watch for this change this will also send a put request to the API to retrieve the Computer guess
+// computers number will be extracted from the message which will increment the counter
+// useEffect to have a time out delay
+// set state that triggers the changes on the page, flicks between user and computer guesses
+// state to check if game.complete is true -> if ball = 21, set state to true and print game.message
+
+const [userInput, setUserInput] = useState (0)
+const [counter, setCounter] =useState (0)
+
+
+
+const handleChange = (event) => {
+    setUserInput(event.target.value)
+    // const userInput = 
+
+}
+
+const handleFormSubmit = (event) => {
+    event.preventDefault();
+    console.log(event.target.value);
+    setCounter((prev) => {
+        return prev += parseInt(userInput);
+    })
+}
+
+
+
     return ( 
         <>
-            <h3> Hello from game containers </h3>
-        
+            <h3> Get ready to lose </h3>
+            <h4> {leadPlayer.name}  </h4>
+            <p>{counter}</p>
+            <form onSubmit={handleFormSubmit}>
+                <input 
+                type="number" 
+                name="userInput" placeholder="Enter your guess" 
+                value ={userInput}
+                onChange={handleChange}
+                min="1" 
+                max="3">
+                </input>
+                <button type="submit"> submit</button>
+            </form>
         
         </>
      );
