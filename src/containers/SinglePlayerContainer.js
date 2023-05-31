@@ -57,7 +57,6 @@ const existingGames = leadPlayer.games.filter(game => game.complete === false &&
 })
 
     
-
     return ( 
         <>
         {/* <h2> {activePlayer.name}</h2> */}
