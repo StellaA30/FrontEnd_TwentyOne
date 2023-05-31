@@ -32,9 +32,10 @@ function App() {
         headers: {'Content-Type': 'application/json'}
     });    
     const newGame = await response.json();
-    // console.log(newGame);
+
+    
     const newGameId = newGame.message.match("[0-9]+")[0];
-    // console.log(newGameId);
+
     startNewGame(newGameId);
 
   };
@@ -46,6 +47,7 @@ const  startNewGame = async(gameId) => {
 
     });
     const gameData = await response.json();
+    gameData.id = gameId;
     setGame(gameData);
     // navigate("/gamePage");
 }
@@ -140,7 +142,7 @@ const setActiveGame = (gameId) => {
     },
     {
       path: "gamePage",
-      element: <GameContainer leadPlayer={leadPlayer} />,
+      element: <GameContainer leadPlayer={leadPlayer} game={game} setGame={setGame} />,
     },
   ]);
 
