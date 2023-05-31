@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useNavigate , Outlet } from "react-router-dom";
 import PlayerComponent from "../components/PlayerComponent"
 
 
 const SinglePlayerContainer = ({leadPlayer, onFormSubmit}) => {
 
     const [selectedMode, setSelectedMode] = useState(null);
+
+    const navigate = useNavigate();
 
     const handleGameMode = (event) => {
         const selectedMode = event.target.value;
@@ -13,7 +16,8 @@ const SinglePlayerContainer = ({leadPlayer, onFormSubmit}) => {
 
 const handleFormSubmit = (event) => {
     event.preventDefault();
-    onFormSubmit(1, selectedMode);
+    onFormSubmit(leadPlayer.id, selectedMode);
+    navigate("/gamePage");
 }
 
     
@@ -27,7 +31,7 @@ const handleFormSubmit = (event) => {
     return ( 
         <>
         {/* <h2> {activePlayer.name}</h2> */}
-        <h2>Single Player</h2>
+        <h2>Welcome {leadPlayer.name}</h2>
         <form onSubmit={handleFormSubmit}>
         <select onChange={handleGameMode}  name="game mode" defaultValue="game mode">
             <option disabled-value="game mode">Game mode</option>
