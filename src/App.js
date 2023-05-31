@@ -6,7 +6,9 @@ import GameContainer from "./containers/GameContainer";
 import LandingContainer from "./containers/LandingContainer";
 import LoserBoardContainer from "./containers/LoserBoardContainer";
 import LogInContainer from "./containers/LogInContainer";
+import Navbar from "./containers/Navbar";
 import { useEffect, useState } from "react";
+
 
 function App() {
   const [activePlayer, setActivePlayer] = useState([]);
@@ -16,6 +18,7 @@ function App() {
   const [leadPlayer, setLeadPlayer] = useState(null);
   
   const [newPlayer, setNewPlayer] = useState("");
+
 
 
   // useEffect(() => {
@@ -29,12 +32,13 @@ function App() {
         headers: {'Content-Type': 'application/json'}
     });    
     const newGame = await response.json();
+
+    
     const newGameId = newGame.message.match("[0-9]+")[0];
+
     startNewGame(newGameId);
 
   };
-
-
 
 const  startNewGame = async(gameId) => {
     const response = await fetch(`http://localhost:8080/games/${gameId}`, {
@@ -45,6 +49,30 @@ const  startNewGame = async(gameId) => {
     const gameData = await response.json();
     gameData.id = gameId;
     setGame(gameData);
+    // navigate("/gamePage");
+}
+
+
+
+// // Single player method for selection new/existing game
+// const gameOptionList = (optionType) => {
+//   if(optionType === "new game") {
+//     // let first fropdown disappear and 
+//     // go to dropdown/section to create new game
+//   }
+
+//   else{
+//     // navigate to the game page for the selected existing game
+//     navigate("/gamePage");
+//   }
+// }
+
+
+const setActiveGame = (gameId) => {
+  const foundGame = leadPlayer.games.find((game) => parseInt(gameId) === game.id);
+  setGame(foundGame);
+  // navigate("/gamePage");
+
 }
 
   useEffect(()=>{
@@ -106,7 +134,7 @@ const  startNewGame = async(gameId) => {
     },
     {
       path: "singlePlayer", 
-      element: <SinglePlayerContainer leadPlayer={leadPlayer} onFormSubmit={postGame}/>,
+      element: <SinglePlayerContainer leadPlayer={leadPlayer} onFormSubmit={postGame} setActiveGame={setActiveGame}/>,
     },
     {
       path: "multiPlayer",
@@ -121,6 +149,7 @@ const  startNewGame = async(gameId) => {
   return (
     <>
       <h1>21 Game</h1>
+      <Navbar/>
       <RouterProvider router={router} />
       <LoserBoardContainer />
     </>
