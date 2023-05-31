@@ -19,9 +19,7 @@ function App() {
   
   const [newPlayer, setNewPlayer] = useState("");
 
-
-
-  // useEffect(() => {
+// useEffect(() => {
 //for single player container 
   const postGame = async(playerId, gameMode) => {
     // const url = await URL (`http://localhost:8080/games?playerId=${playerId}&gameType=${gameMode}`);

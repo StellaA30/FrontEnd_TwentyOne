@@ -1,10 +1,15 @@
+import { useState } from "react";
 import PlayerComponent from "../components/PlayerComponent";
 import "../CSSFiles/LogInContainer.css";
 
 const LogInContainer = ({ newPlayer, setNewPlayer, logIn }) => {
+
+  const [displayButton, setDisplayButton] = useState(false);
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
     logIn();
+    setDisplayButton(!displayButton);
   };
 
   return (
@@ -17,7 +22,8 @@ const LogInContainer = ({ newPlayer, setNewPlayer, logIn }) => {
       </p>
       <form onSubmit={handleFormSubmit}>
         <PlayerComponent newPlayer={newPlayer} setNewPlayer={setNewPlayer} />
-        <button type="submit"> Log In </button>
+        {!displayButton && 
+        <button type="submit"> Log In </button>}
       </form>
     </>
   );
