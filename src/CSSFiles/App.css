@@ -8,7 +8,7 @@ body {
 button {
   font-size: 16px;
   background-color: #453f3d;
-  color: black;
+  color: rgb(189, 129, 129);
   text-decoration: none;
   text-transform: uppercase;
   border: 3px solid;
@@ -19,4 +19,26 @@ input {
   padding: 0.25em 0.5em;
   border: 3px solid;
   font-size: 16px;
+}
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  margin-left: 10px;
+  color: white;
+}
+
+nav a {
+  text-decoration: none;
+  color:white;
 }
