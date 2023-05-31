@@ -6,6 +6,7 @@ import GameContainer from "./containers/GameContainer";
 import LandingContainer from "./containers/LandingContainer";
 import LoserBoardContainer from "./containers/LoserBoardContainer";
 import LogInContainer from "./containers/LogInContainer";
+import Navbar from "./containers/Navbar";
 import { useEffect, useState } from "react";
 
 
@@ -146,6 +147,7 @@ const setActiveGame = (gameId) => {
   return (
     <>
       <h1>21 Game</h1>
+      <Navbar/>
       <RouterProvider router={router} />
       <LoserBoardContainer />
     </>
