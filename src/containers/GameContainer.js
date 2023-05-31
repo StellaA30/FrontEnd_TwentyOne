@@ -15,6 +15,7 @@ const handleFormSubmit = (event) => {
     event.preventDefault();
     setCounter(counter +parseInt(userInput))
     updateGame(game);
+    setMessage("Computer thinking...");
 }
 
 const updateGame = async (updatedGame) => {
@@ -23,11 +24,16 @@ const updateGame = async (updatedGame) => {
         headers:{"Content-Type" : "application/json"},
     })
     const jsonData = await response.json();
-    setCounter(jsonData.gameState)
-    setMessage(jsonData.message)
+
+    setTimeout(() => {
+        setCounter(jsonData.gameState)
+        setMessage(jsonData.message)
+    }, 1500); 
+
     setGame(updatedGame);
 }
 
+// useEffect seems to trigger when the game starts??? why??? 
 useEffect(()=>{
         setDisplayForm(!displayForm);
 },[(counter >= 21)])
