@@ -41,7 +41,7 @@ const handleFormSubmit = (event) => {
         <button type ="submit">Start game!</button>
       </form>
 
-        <PlayerComponent/>
+        {/* <PlayerComponent/> */}
         </>
      );
 }
