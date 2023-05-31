@@ -25,7 +25,7 @@ const LoserBoardContainer = () => {
   return (
     <>
       <h3> LOSER BOARD </h3>
-      <h5> Check to see if you are the *leading* loser </h5>
+      <h5> Check to see if you are the *leading* loser. </h5>
       <ol>{loserBoardItems}</ol>
     </>
   );

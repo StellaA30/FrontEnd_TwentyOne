@@ -36,19 +36,20 @@ function App() {
   };
 
   const logIn = () => {
+    let potentialPlayer = null;
+
     for (let i = 0; i < activePlayer.length; i++) {
       if (activePlayer[i].name === newPlayer) {
-        setLeadPlayer(activePlayer[i]);
-      }
+        potentialPlayer = activePlayer[i];
+      } 
     }
-    // as long as you always log in as a new player there is no issue 
-    // when lead player is null (you cannot find the person)
-    if (!leadPlayer) {
-      // post a new player, using the input field
+
+    if (!potentialPlayer) {
       postPlayer(newPlayer);
-      // assign input field as Lead Player
-      setLeadPlayer(newPlayer);
+    } else {
+      setLeadPlayer(potentialPlayer);
     }
+    
   };
 
   const router = createBrowserRouter([
