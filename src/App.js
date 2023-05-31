@@ -34,6 +34,7 @@ function App() {
     console.log(newGameId);
     startNewGame(newGameId);
 }
+  })
 
 const  startNewGame = async(gameId) => {
     const response = await fetch(`http://localhost:8080/games/${gameId}`, {
