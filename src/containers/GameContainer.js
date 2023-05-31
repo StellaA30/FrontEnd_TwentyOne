@@ -48,7 +48,7 @@ useEffect(()=>{
                 max="3">
                 </input>
                 <button type="submit"> submit</button>
-            </form> : null}
+            </form> : null }
         </>
      );
 }
