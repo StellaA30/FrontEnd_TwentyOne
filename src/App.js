@@ -43,6 +43,7 @@ const  startNewGame = async(gameId) => {
 
     });
     const gameData = await response.json();
+    gameData.id = gameId;
     setGame(gameData);
 }
 

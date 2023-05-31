@@ -30,10 +30,10 @@ const updateGame = async (updatedGame) => {
     const response = await fetch(`http://localhost:8080/games/${game.id}?playerId=${leadPlayer.id}&guess=${userInput}`, {
         method:"PUT",
         headers:{"Content-Type" : "application/json"},
-        body: JSON.stringify(updatedGame)
     })
-    const jsonData = response.json;
+    const jsonData = await response.json();
     updatedGame = jsonData;
+    updatedGame.id = game.id;
     setGame(updatedGame);
 }
 
