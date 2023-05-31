@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const GameContainer = ({leadPlayer, game, setGame}) => {
 // counter for "ball" -> this will increment depending on user input or computer input
@@ -38,6 +38,17 @@ const updateGame = async (updatedGame) => {
 }
 
 
+// useEffect(() => {
+//     const computerGuess = game.message.match("[0-4]+")[0]
+//     console.log(game.message)
+//    setCounter(counter += computerGuess);
+// },[handleFormSubmit])
+
+
+const handleGameCompletion = () => {
+// print game.message if counter is > than 21
+}
+
     return ( 
         <>
             <h3> Get ready to lose </h3>
@@ -54,6 +65,7 @@ const updateGame = async (updatedGame) => {
                 </input>
                 <button type="submit"> submit</button>
             </form>
+            <p>{handleGameCompletion}</p>
         
         </>
      );
