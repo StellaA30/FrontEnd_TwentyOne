@@ -26,20 +26,22 @@ const handleChange = (event) => {
 
 const handleFormSubmit = (event) => {
     event.preventDefault();
-    // setCounter((prev) => {
-    //     return prev += parseInt(userInput)
-    // })
     setCounter(counter +parseInt(userInput))
     updateGame(game);
 }
-
 
 
 const updateGame = async (updatedGame) => {
     const response = await fetch(`http://localhost:8080/games/${game.id}?playerId=${leadPlayer.id}&guess=${userInput}`, {
         method:"PUT",
         headers:{"Content-Type" : "application/json"},
+
     })
+
+    // setTimeout(() => {
+        // setMessage("Computer is thinking...")
+    // },3000)
+    
     const jsonData = await response.json();
     // updatedGame = jsonData;
     // updatedGame.id = game.id;
@@ -49,18 +51,6 @@ const updateGame = async (updatedGame) => {
     setGame(updatedGame);
 }
 
-
-
-
-
-// console.log(game.message)
-
-// useEffect(() => {
-//     const computerGuess = game.message.match("[0-4]+")[0]
-//    setCounter(counter += computerGuess);
-// },[handleFormSubmit])
-
-
 const handleGameCompletion = () => {
 // print game.message if counter is > than 21
 }
@@ -69,7 +59,7 @@ const handleGameCompletion = () => {
         <>
             <h3> Get ready to lose </h3>
             <h4> {leadPlayer.name}  </h4>
-            <p>{counter}</p>
+            <h1>{counter}</h1>
             {message}
             <form onSubmit={handleFormSubmit}>
                 <input 
