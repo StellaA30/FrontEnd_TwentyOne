@@ -8,6 +8,7 @@ import LoserBoardContainer from "./containers/LoserBoardContainer";
 import LogInContainer from "./containers/LogInContainer";
 import { useEffect, useState } from "react";
 
+
 function App() {
   const [activePlayer, setActivePlayer] = useState([]);
 
@@ -16,6 +17,7 @@ function App() {
   const [leadPlayer, setLeadPlayer] = useState(null);
   
   const [newPlayer, setNewPlayer] = useState("");
+
 
 
   // useEffect(() => {
@@ -29,9 +31,9 @@ function App() {
         headers: {'Content-Type': 'application/json'}
     });    
     const newGame = await response.json();
-    console.log(newGame);
+    // console.log(newGame);
     const newGameId = newGame.message.match("[0-9]+")[0];
-    console.log(newGameId);
+    // console.log(newGameId);
     startNewGame(newGameId);
 
   };
@@ -44,13 +46,30 @@ const  startNewGame = async(gameId) => {
     });
     const gameData = await response.json();
     setGame(gameData);
+    // navigate("/gamePage");
 }
 
-// Single player method for selection new/existing game
-const gameOptionList = (optionType) => {
-  if(optionType === "new game") {
-    optionType();
-  }
+
+
+// // Single player method for selection new/existing game
+// const gameOptionList = (optionType) => {
+//   if(optionType === "new game") {
+//     // let first fropdown disappear and 
+//     // go to dropdown/section to create new game
+//   }
+
+//   else{
+//     // navigate to the game page for the selected existing game
+//     navigate("/gamePage");
+//   }
+// }
+
+
+const setActiveGame = (gameId) => {
+  const foundGame = leadPlayer.games.find((game) => parseInt(gameId) === game.id);
+  setGame(foundGame);
+  // navigate("/gamePage");
+
 }
 
   useEffect(()=>{
@@ -112,7 +131,7 @@ const gameOptionList = (optionType) => {
     },
     {
       path: "singlePlayer", 
-      element: <SinglePlayerContainer leadPlayer={leadPlayer} onFormSubmit={postGame}/>,
+      element: <SinglePlayerContainer leadPlayer={leadPlayer} onFormSubmit={postGame} setActiveGame={setActiveGame}/>,
     },
     {
       path: "multiPlayer",
