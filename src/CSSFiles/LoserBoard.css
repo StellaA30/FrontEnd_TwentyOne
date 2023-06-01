@@ -1,0 +1,11 @@
+.loserBoard{
+ background-color: #615858;
+  margin: 0px, 100px, 0px, 100px;
+  padding: 10px;
+}
+
+.loserBoard> ol{
+  font-size: 14px;
+  text-align: justify;
+  padding-top: 0;
+}

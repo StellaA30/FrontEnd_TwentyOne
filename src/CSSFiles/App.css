@@ -8,10 +8,10 @@ body {
 button {
   font-size: 16px;
   background-color: #453f3d;
-  color: rgb(189, 129, 129);
+  color: white;
   text-decoration: none;
   text-transform: uppercase;
-  /* border: 3px solid; */
+  border: 3px solid;
   padding: 0.25em 0.5em;
 }
 
@@ -23,8 +23,13 @@ input {
 
 select {
   padding: 0.25em 0.5em;
-  border: 3px solid;
+  margin-top: 10px;
+  margin-right: 5px;
+  /* border: 3px solid; */
   font-size: 16px;
+  background-color:#453f3d;
+  color: white;
+  height: 33px;
 }
 
 nav {

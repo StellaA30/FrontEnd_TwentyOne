@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "../CSSFiles/LoserBoard.css"
 
 const LoserBoardContainer = () => {
   const [loserBoard, setLoserBoard] = useState([]);
@@ -23,11 +24,11 @@ const LoserBoardContainer = () => {
   });
 
   return (
-    <>
+    <section className="loserBoard">
       <h3> LOSER BOARD </h3>
       <h5> Check to see if you are the *leading* loser. </h5>
       <ol>{loserBoardItems}</ol>
-    </>
+    </section>
   );
 };
 
