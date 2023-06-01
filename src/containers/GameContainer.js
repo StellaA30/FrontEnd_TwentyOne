@@ -22,8 +22,16 @@ const updateGame = async (updatedGame) => {
     const response = await fetch(`http://localhost:8080/games/${game.id}?playerId=${leadPlayer.id}&guess=${userInput}`, {
         method:"PUT",
         headers:{"Content-Type" : "application/json"},
+
     })
+
+    // setTimeout(() => {
+        // setMessage("Computer is thinking...")
+    // },3000)
+    
     const jsonData = await response.json();
+
+const handleGameCompletion = () => {
 
     setTimeout(() => {
         setCounter(jsonData.gameState)
@@ -42,7 +50,7 @@ useEffect(()=>{
         <>
             <h3> Get ready to lose </h3>
             <h4> {leadPlayer.name}  </h4>
-            <p>{counter}</p>
+            <h1>{counter}</h1>
             {message}
             {displayForm ? <form onSubmit={handleFormSubmit}>
                 <input 
