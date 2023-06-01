@@ -1,22 +1,19 @@
-import { useState } from "react";
+const PlayerComponent = ({ newPlayer, setNewPlayer }) => {
+  const handleChange = (event) => {
+    setNewPlayer(event.target.value);
+  };
 
-const PlayerComponent = ({newPlayer, setNewPlayer}) => {
+  return (
+    <>
+      <input
+        type="text"
+        placeholder="enter player name"
+        name="name"
+        value={newPlayer}
+        onChange={handleChange}
+      />
+    </>
+  );
+};
 
-    const handleChange = (event) =>{
-        setNewPlayer(event.target.value)
-    }
-
-    return ( 
-        <>
-            <input
-            type="text"
-            placeholder="enter player name"
-            name="name"
-            value={newPlayer}
-            onChange={handleChange}
-            />
-        </>
-     );
-}
- 
 export default PlayerComponent;
