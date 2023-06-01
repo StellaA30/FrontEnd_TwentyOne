@@ -1,122 +1,116 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./CSSFiles/App.css";
-import SinglePlayerContainer from "./containers/SinglePlayerContainer";
-import MultiPlayerContainer from "./containers/MultiPlayerContainer";
+import SinglePlayerComponent from "./components/SinglePlayerComponent";
+import MultiPlayerComponent from "./components/MultiPlayerComponent";
 import GameContainer from "./containers/GameContainer";
 import LandingContainer from "./containers/LandingContainer";
-import LoserBoardContainer from "./containers/LoserBoardContainer";
 import LogInContainer from "./containers/LogInContainer";
-import Navbar from "./containers/Navbar";
 import { useEffect, useState } from "react";
-
 
 function App() {
   const [activePlayer, setActivePlayer] = useState([]);
-
   const [game, setGame] = useState(null);
-  
   const [leadPlayer, setLeadPlayer] = useState(null);
-  
   const [newPlayer, setNewPlayer] = useState("");
+  const [selectedTags, setSelectedTags] = useState([]);
+  const [additionalPlayers, setAdditionalPlayers] = useState([]);
+  const [isNewGame, setIsNewGame] = useState(false);
+  const [selectedMode, setSelectedMode] = useState(null);
+  const [selectDifficulty, setSelectDifficulty] = useState(null);
 
-// useEffect(() => {
-//for single player container 
-  const postGame = async(playerId, gameMode) => {
-    // const url = await URL (`http://localhost:8080/games?playerId=${playerId}&gameType=${gameMode}`);
-    // url.searchParams.append('param', JSON.stringify(playerId, gameMode));
-
-    const response = await fetch(`http://localhost:8080/games?playerId=${playerId}&gameType=${gameMode}`, {
+  // PostGame and start new game for single player
+  const postGame = async (playerId, gameMode) => {
+    const response = await fetch(
+      `http://localhost:8080/games?playerId=${playerId}&gameType=${gameMode}`,
+      {
         method: "POST",
-        headers: {'Content-Type': 'application/json'}
-    });    
+        headers: { "Content-Type": "application/json" },
+      }
+    );
     const newGame = await response.json();
-
     const newGameId = newGame.message.match("[0-9]+")[0];
-
     startNewGame(newGameId);
-
   };
 
-const  startNewGame = async(gameId) => {
+  const startNewGame = async (gameId) => {
     const response = await fetch(`http://localhost:8080/games/${gameId}`, {
       method: "PATCH",
-        headers: {'Content-Type': 'application/json'}
-
+      headers: { "Content-Type": "application/json" },
     });
-    const activeGameResponse = await fetch(`http://localhost:8080/games/${gameId}`)
+
+    // getting game object
+    const activeGameResponse = await fetch(
+      `http://localhost:8080/games/${gameId}`
+    );
     const activeGame = await activeGameResponse.json();
     setGame(activeGame);
-    // navigate("/gamePage");
-}
+  };
 
+  // selects the existing game for a single player game
+  const setActiveGame = (gameId) => {
+    const foundGame = leadPlayer.games.find(
+      (game) => parseInt(gameId) === game.id
+    );
+    setGame({ ...foundGame });
+  };
 
-
-// // Single player method for selection new/existing game
-// const gameOptionList = (optionType) => {
-//   if(optionType === "new game") {
-//     // let first fropdown disappear and 
-//     // go to dropdown/section to create new game
-//   }
-
-//   else{
-//     // navigate to the game page for the selected existing game
-//     navigate("/gamePage");
-//   }
-// }
-
-
-const setActiveGame = (gameId) => {
-  const foundGame = leadPlayer.games.find((game) => parseInt(gameId) === game.id);
-  setGame({...foundGame});
-
-  // navigate("/gamePage");
-
-}
-
-  useEffect(()=>{
-
+  // fetch all the player data
+  useEffect(() => {
     const fetchPlayers = async () => {
       const response = await fetch("http://localhost:8080/players");
       const jsonData = await response.json();
       setActivePlayer(jsonData);
     };
-
     fetchPlayers();
   }, []);
 
-  const postPlayer = async (newPlayer) => {
+  // add player to database
+  const addNewPlayer = async (newPlayer) => {
     const response = await fetch("http://localhost:8080/players", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newPlayer),
     });
     const savedPlayer = await response.json();
-    // adapt line below to a ternary operator if you need to add more players
     setLeadPlayer(savedPlayer);
     setActivePlayer([...activePlayer, savedPlayer]);
   };
 
+  // logs player in
   const logIn = () => {
     let potentialPlayer = null;
-
     for (let i = 0; i < activePlayer.length; i++) {
       if (activePlayer[i].name === newPlayer) {
         potentialPlayer = activePlayer[i];
-      } 
+      }
     }
-
     if (!potentialPlayer) {
-      postPlayer(newPlayer);
+      addNewPlayer(newPlayer);
     } else {
       setLeadPlayer(potentialPlayer);
     }
-    
+  };
+
+  // multiplayer method TBC
+  const addPlayerToGame = async (gameId, playerId) => {
+    const response = await fetch(`http://localhost:8080/games/${gameId}`, {
+      method: "POST",
+      headers: { "Content-Type": "Application/json" },
+      body: JSON.stringify(playerId),
+    });
+    const jsonData = await response.json();
+    setAdditionalPlayers([...additionalPlayers, jsonData]);
   };
 
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <LandingContainer />,
+      element: (
+        <LandingContainer
+          selectedMode={selectedMode}
+          setSelectedMode={setSelectedMode}
+        />
+      ),
       children: [
         {
           path: "/logIn",
@@ -131,25 +125,52 @@ const setActiveGame = (gameId) => {
       ],
     },
     {
-      path: "singlePlayer", 
-      element: <SinglePlayerContainer leadPlayer={leadPlayer} onFormSubmit={postGame} setActiveGame={setActiveGame}/>,
+      path: "singlePlayer",
+      element: (
+        <SinglePlayerComponent
+          leadPlayer={leadPlayer}
+          onFormSubmit={postGame}
+          setActiveGame={setActiveGame}
+          isNewGame={isNewGame}
+          setIsNewGame={setIsNewGame}
+          selectDifficulty={selectDifficulty}
+          setSelectDifficulty={setSelectDifficulty}
+        />
+      ),
     },
     {
       path: "multiPlayer",
-      element: <MultiPlayerContainer />,
+      element: (
+        <MultiPlayerComponent
+          leadPlayer={leadPlayer}
+          activePlayer={activePlayer}
+          selectedTags={selectedTags}
+          setSelectedTags={setSelectedTags}
+          addPlayerToGame={addPlayerToGame}
+          setActiveGame={setActiveGame}
+          setIsNewGame={setIsNewGame}
+          game={game}
+          onFormSubmit={postGame}
+        />
+      ),
     },
     {
       path: "gamePage",
-      element: <GameContainer leadPlayer={leadPlayer} game={game} setGame={setGame} />,
+      element: (
+        <GameContainer leadPlayer={leadPlayer} game={game}/>
+      ),
     },
   ]);
 
   return (
     <>
       <h1>21 Game</h1>
-      <Navbar/>
+      <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+        </ul>
+        </nav>
       <RouterProvider router={router} />
-      <LoserBoardContainer />
     </>
   );
 }
