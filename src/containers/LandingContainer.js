@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useNavigate, Outlet } from "react-router-dom";
 import "../CSSFiles/LandingContainer.css";
+import LoserBoardContainer from "./LoserBoardContainer";
 
-const LandingContainer = () => {
-  const [selectedMode, setSelectedMode] = useState(null);
+const LandingContainer = ({selectedMode, setSelectedMode} ) => {
+
   const [displayButton, setDisplayButton] = useState(false);
   const navigate = useNavigate();
 
@@ -68,6 +69,7 @@ const LandingContainer = () => {
           </li>
         </ol>
       </section>
+      <LoserBoardContainer />
     </>
   );
 };

@@ -4,17 +4,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-const MultiPlayerContainer = ({leadPlayer, activePlayer,selectedTags, setSelectedTags, addPlayerToGame, deletePlayerFromGame, setActiveGame}) => {
+const MultiPlayerContainer = ({leadPlayer, activePlayer,selectedTags, setSelectedTags, addPlayerToGame, deletePlayerFromGame, setActiveGame, setIsNewGame, game}) => {
 
-    const [isNewGame, setIsNewGame] = useState(false)
+    const getAllOtherPlayers = activePlayer.filter(player => player.id !== leadPlayer.id).map(player => player.id)
 
-    const getAllOtherPlayers = activePlayer.filter(player => player.id !== leadPlayer.id).map(player => player.name)
-
-
+// Display player name and id
     const onChange = (selectedOptions) => {
-      return setSelectedTags(selectedOptions)
-      {addPlayerToGame()}
-    
+      console.log(selectedOptions);
+      return setSelectedTags(selectedOptions), addPlayerToGame(game.id, selectedOptions)
     };
 
     const existingGames = leadPlayer.games.filter(game => game.complete === false && game.gameType === "MULTIPLAYER")
