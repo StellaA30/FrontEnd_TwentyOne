@@ -10,6 +10,7 @@
     margin-top: 20px;
     width: 30px;
     height: 30px;
+    border-radius: 15px;
 }
 
 .message{
@@ -18,12 +19,17 @@
 
 .Game_page > h2{
     font-size: 1000%;
-    border: 10px solid rgb(169, 140, 140);
+    border: 10px solid rgb(99, 22, 22);
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: auto;
     width: 250px;
+    height:250px;
+    border-radius: 50%;
+    background-color: rgb(173, 15, 15);
+    margin-bottom: 15px;
+
   
 }

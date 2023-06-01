@@ -15,6 +15,6 @@
 
 .loserBoard > ol > li:first-of-type {
     /* CSS rules for the first li element */
-    color: rgb(109, 9, 9);
+    color: rgb(124, 16, 16);
     font-weight: bold;
   }

@@ -13,12 +13,18 @@ button {
   text-transform: uppercase;
   border: 3px solid;
   padding: 0.25em 0.5em;
+  border-radius: 15px;
+}
+
+button:hover {
+   background-color: rgb(173, 15, 15);
 }
 
 input {
   padding: 0.25em 0.5em;
   border: 3px solid;
   font-size: 16px;
+  border-radius: 15px;
 }
 
 select {
@@ -30,6 +36,7 @@ select {
   background-color:#453f3d;
   color: white;
   height: 33px;
+  border-radius: 15px;
 }
 
 h1 {
@@ -40,4 +47,12 @@ h1 {
 h1 a {
   text-decoration: none;
   color:white;
+}
+
+h1 a:hover {
+  color: rgb(195, 18, 18);
+}
+
+select:hover{
+  background-color: rgb(195, 18, 18);
 }
