@@ -36,14 +36,15 @@ const  startNewGame = async(gameId) => {
       method: "PATCH",
       headers: {'Content-Type': 'application/json'}
     });
-    const gameData = await response.json();
-    gameData.id = gameId;
-    setGame(gameData);
+
+    const activeGameResponse = await fetch(`http://localhost:8080/games/${gameId}`)
+    const activeGame = await activeGameResponse.json();
+    setGame(activeGame);
 }
 
 const setActiveGame = (gameId) => {
   const foundGame = leadPlayer.games.find((game) => parseInt(gameId) === game.id);
-  setGame(foundGame);
+  setGame({...foundGame});
 }
 
   useEffect(()=>{

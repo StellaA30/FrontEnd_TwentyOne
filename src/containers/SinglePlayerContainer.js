@@ -29,8 +29,7 @@ const handleFormSubmit = (event) => {
 const handleGameList = (event) => {
     const selectedOption = event.target.value;
     if(selectedOption === "newGame"){
-        setIsNewGame(true);
-      
+        setIsNewGame(true);    
     }
     else {
         setActiveGame(selectedOption);
