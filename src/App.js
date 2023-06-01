@@ -18,6 +18,8 @@ function App() {
   const [leadPlayer, setLeadPlayer] = useState(null);
   
   const [newPlayer, setNewPlayer] = useState("");
+  const [selectedTags, setSelectedTags] = useState([]);
+  const [additionalPlayers, setAdditionalPlayers] = useState([]);
 
 // useEffect(() => {
 //for single player container 
@@ -113,6 +115,16 @@ const setActiveGame = (gameId) => {
     
   };
 
+  const addPlayerToGame = async(gameId, playerId) => {
+    const response = await fetch (`http://localhost:8080/games/${gameId}`, {
+      method: "POST",
+      headers: {"Content-Type": "Application/json"},
+      body: JSON.stringify(playerId)
+    })
+    const jsonData = await response.json()
+    setAdditionalPlayers([...additionalPlayers, jsonData])
+  }
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -136,7 +148,7 @@ const setActiveGame = (gameId) => {
     },
     {
       path: "multiPlayer",
-      element: <MultiPlayerContainer leadPlayer={leadPlayer} activePlayer={activePlayer}/>,
+      element: <MultiPlayerContainer leadPlayer={leadPlayer} activePlayer={activePlayer} selectedTags={selectedTags} setSelectedTags={setSelectedTags} addPlayerToGame={addPlayerToGame} setActiveGame={setActiveGame}/>,
     },
     {
       path: "gamePage",
