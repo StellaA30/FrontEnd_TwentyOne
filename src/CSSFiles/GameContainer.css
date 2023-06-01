@@ -1,0 +1,29 @@
+.Game_page > h3{
+    font-size: 20px;
+}
+
+.Game_page > h4{
+    font-size: 30px;
+}
+
+.form > input{
+    margin-top: 20px;
+    width: 30px;
+    height: 30px;
+}
+
+.message{
+    font-size: 20px;
+}
+
+.Game_page > h2{
+    font-size: 1000%;
+    border: 10px solid rgb(169, 140, 140);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 250px;
+  
+}

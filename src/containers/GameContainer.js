@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "../CSSFiles/GameContainer.css"
 
 const GameContainer = ({ leadPlayer, game }) => {
   const [userInput, setUserInput] = useState(0);
@@ -45,13 +46,17 @@ const GameContainer = ({ leadPlayer, game }) => {
   };
 
   return (
-    <>
+    <section className="Game_page">
       <h3> Get ready to lose </h3>
       <h4> {leadPlayer.name} </h4>
-      <h1>{counter}</h1>
+      <h2>{counter}</h2>
+      
+      <div className="message">
       {message}
+      </div>
+
       {displayForm ? (
-        <form onSubmit={handleFormSubmit}>
+        <form className="form" onSubmit={handleFormSubmit}>
           <input
             type="number"
             name="userInput"
@@ -64,7 +69,7 @@ const GameContainer = ({ leadPlayer, game }) => {
           <button type="submit"> submit</button>
         </form>
       ) : null}
-    </>
+    </section>
   );
 };
 
