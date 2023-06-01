@@ -31,7 +31,6 @@ function App() {
     });    
     const newGame = await response.json();
 
-    
     const newGameId = newGame.message.match("[0-9]+")[0];
 
     startNewGame(newGameId);
