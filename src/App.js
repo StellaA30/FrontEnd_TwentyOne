@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./CSSFiles/App.css";
-import SinglePlayerContainer from "./containers/SinglePlayerContainer";
+import SinglePlayerComponent from "./components/SinglePlayerComponent";
 import MultiPlayerContainer from "./containers/MultiPlayerContainer";
 import GameContainer from "./containers/GameContainer";
 import LandingContainer from "./containers/LandingContainer";
@@ -18,6 +18,8 @@ function App() {
   const [additionalPlayers, setAdditionalPlayers] = useState([]);
   const [isNewGame, setIsNewGame] = useState(false)
   const [selectedMode, setSelectedMode] = useState(null);
+  const [selectDifficulty, setSelectDifficulty] = useState(null);
+  
 
 
 
@@ -110,7 +112,7 @@ const setActiveGame = (gameId) => {
     },
     {
       path: "singlePlayer", 
-      element: <SinglePlayerContainer leadPlayer={leadPlayer} onFormSubmit={postGame} setActiveGame={setActiveGame}/>,
+      element: <SinglePlayerComponent leadPlayer={leadPlayer} onFormSubmit={postGame} setActiveGame={setActiveGame} isNewGame={isNewGame} setIsNewGame={setIsNewGame} selectDifficulty={selectDifficulty} setSelectDifficulty={setSelectDifficulty}/>,
     },
     {
       path: "multiPlayer",

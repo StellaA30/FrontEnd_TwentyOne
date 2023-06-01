@@ -1,29 +1,20 @@
-import { useState } from "react";
-import { useNavigate , Outlet } from "react-router-dom";
-import PlayerComponent from "../components/PlayerComponent"
+import { useNavigate } from "react-router-dom";
 
-
-const SinglePlayerContainer = ({leadPlayer, onFormSubmit, setActiveGame}) => {
-
-    // for slecting game difficulty
-    const [selectedMode, setSelectedMode] = useState(null);
-    // for selecting new / existing game
-    const [isNewGame, setIsNewGame] = useState(false);
+const SinglePlayerComponent = ({leadPlayer, onFormSubmit, setActiveGame, isNewGame, setIsNewGame, selectDifficulty, setSelectDifficulty}) => {
 
     const navigate = useNavigate();
 
     const handleGameType = (event) => {
-        const selectedMode = event.target.value;
-        setSelectedMode(selectedMode);
+        const selectedDifficulty = event.target.value;
+        setSelectDifficulty(selectedDifficulty);
 };
 
 // for submitting new game in single player container
 const handleFormSubmit = (event) => {
     event.preventDefault();
-    onFormSubmit(leadPlayer.id, selectedMode);
+    onFormSubmit(leadPlayer.id, selectDifficulty);
     navigate("/gamePage"); 
 }
-
 
 // functions for first dropdown list
 const handleGameList = (event) => {
@@ -35,7 +26,6 @@ const handleGameList = (event) => {
         setActiveGame(selectedOption);
         setIsNewGame(false);
         navigate("/gamePage");
-
     }
 };
 
@@ -50,10 +40,8 @@ const existingGames = leadPlayer.games.filter(game => game.complete === false &&
     )
 })
 
-    
     return ( 
         <>
-        {/* <h2> {activePlayer.name}</h2> */}
         <h2>Hi {leadPlayer.name}</h2>
 
         {/* form for selecting existing or creating new game */}
@@ -75,11 +63,8 @@ const existingGames = leadPlayer.games.filter(game => game.complete === false &&
             <button type ="submit">Start game!</button>
       </form>
       : null}
-        
-
-        {/* <PlayerComponent/> */}
         </>
      );
 }
  
-export default SinglePlayerContainer;
+export default SinglePlayerComponent;
