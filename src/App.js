@@ -136,7 +136,7 @@ const setActiveGame = (gameId) => {
     },
     {
       path: "multiPlayer",
-      element: <MultiPlayerContainer />,
+      element: <MultiPlayerContainer leadPlayer={leadPlayer} activePlayer={activePlayer}/>,
     },
     {
       path: "gamePage",
