@@ -32,24 +32,12 @@ select {
   height: 33px;
 }
 
-nav {
-  display: flex;
-  justify-content: flex-end;
+h1 {
+  font-size: 350%;
 }
 
-nav ul {
-  list-style-type: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
-}
 
-nav li {
-  margin-left: 10px;
-  color: white;
-}
-
-nav a {
+h1 a {
   text-decoration: none;
   color:white;
 }

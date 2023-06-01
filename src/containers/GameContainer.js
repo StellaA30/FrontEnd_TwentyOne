@@ -19,7 +19,8 @@ const GameContainer = ({ leadPlayer, game }) => {
     setUserInput(event.target.value);
   };
 
-//   
+
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
     updateGame(game);

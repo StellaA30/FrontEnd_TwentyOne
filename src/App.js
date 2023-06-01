@@ -164,12 +164,7 @@ function App() {
 
   return (
     <>
-      <h1>21 Game</h1>
-      <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-        </ul>
-        </nav>
+      <h1><a href="/">21 Game</a></h1>
       <RouterProvider router={router} />
     </>
   );

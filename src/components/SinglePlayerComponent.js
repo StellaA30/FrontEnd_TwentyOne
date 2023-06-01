@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import singlePlayerPicture from "../assets/single_player.png";
+import "../CSSFiles/SinglePlayer.css";
 
 const SinglePlayerComponent = ({
   leadPlayer,
@@ -80,6 +82,10 @@ const SinglePlayerComponent = ({
           <button type="submit">Start game!</button>
         </form>
       ) : null}
+
+      <div>
+        <img src={singlePlayerPicture} />
+      </div>
     </>
   );
 };

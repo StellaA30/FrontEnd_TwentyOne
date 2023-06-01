@@ -1,11 +1,20 @@
 .loserBoard{
- background-color: #615858;
-  margin: 0px, 100px, 0px, 100px;
-  padding: 10px;
+    background-color: #615858;
+    width: 500px;
+    padding: 10px;
+    margin: auto;
 }
 
-.loserBoard> ol{
-  font-size: 14px;
-  text-align: justify;
-  padding-top: 0;
+.loserBoard > ol{
+  font-size: 18px;
+  text-align: center;
+  padding: 0;
+  list-style-type: none;
+  margin: auto;
 }
+
+.loserBoard > ol > li:first-of-type {
+    /* CSS rules for the first li element */
+    color: rgb(109, 9, 9);
+    font-weight: bold;
+  }
