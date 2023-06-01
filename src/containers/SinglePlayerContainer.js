@@ -7,12 +7,10 @@ const SinglePlayerContainer = ({leadPlayer, onFormSubmit, setActiveGame}) => {
 
     // for slecting game difficulty
     const [selectedMode, setSelectedMode] = useState(null);
-
     // for selecting new / existing game
     const [isNewGame, setIsNewGame] = useState(false);
 
     const navigate = useNavigate();
-
 
     const handleGameType = (event) => {
         const selectedMode = event.target.value;
@@ -23,8 +21,7 @@ const SinglePlayerContainer = ({leadPlayer, onFormSubmit, setActiveGame}) => {
 const handleFormSubmit = (event) => {
     event.preventDefault();
     onFormSubmit(leadPlayer.id, selectedMode);
-    navigate("/gamePage");
-   
+    navigate("/gamePage"); 
 }
 
 
@@ -41,8 +38,6 @@ const handleGameList = (event) => {
 
     }
 };
-
-
 
 // filter and map existing games for player 
 const existingGames = leadPlayer.games.filter(game => game.complete === false && game.gameType !== "MULTIPLAYER")
