@@ -11,6 +11,7 @@ const GameContainer = ({ leadPlayer, game }) => {
     console.log(game);
     if (game && game.currentTotal > 0) {
       setCounter(game.currentTotal);
+      setMessage("Computer has guessed " + game.currentTotal)
     }
   }, [game]);
 
