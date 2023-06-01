@@ -44,9 +44,9 @@ const  startNewGame = async(gameId) => {
         headers: {'Content-Type': 'application/json'}
 
     });
-    const gameData = await response.json();
-    gameData.id = gameId;
-    setGame(gameData);
+    const activeGameResponse = await fetch(`http://localhost:8080/games/${gameId}`)
+    const activeGame = await activeGameResponse.json();
+    setGame(activeGame);
     // navigate("/gamePage");
 }
 
@@ -68,7 +68,8 @@ const  startNewGame = async(gameId) => {
 
 const setActiveGame = (gameId) => {
   const foundGame = leadPlayer.games.find((game) => parseInt(gameId) === game.id);
-  setGame(foundGame);
+  setGame({...foundGame});
+
   // navigate("/gamePage");
 
 }
