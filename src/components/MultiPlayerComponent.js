@@ -1,5 +1,6 @@
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import "../CSSFiles/MultiPlayer.css";
 import mulitPlayerPicture from "../assets/MultiPlayer.png";
 
@@ -24,16 +25,37 @@ const MultiPlayerComponent = ({
   //   .map((player) => `Player ${player.id}: ${player.name}`);
 
 
-    const getAllOtherPlayers = activePlayer
+  //   const getAllOtherPlayers = activePlayer
+  //   .filter((player) => player.id !== leadPlayer.id)
+  //   // Display player name and id
+  //   .map((player) => player.id);
+
+  // const handleChange = (event) => {
+  //   return (
+  //     setSelectedTags(event[0].value), addPlayerToGame(game, event[0].value)
+  //   );
+  // };
+
+  const getAllOtherPlayers = activePlayer
     .filter((player) => player.id !== leadPlayer.id)
     // Display player name and id
-    .map((player) => player.id);
+    .map((player) => `Player ${player.id}: ${player.name}`);
 
-  const handleChange = (event) => {
-    return (
-      setSelectedTags(event[0].value), addPlayerToGame(game, event[0].value)
-    );
-  };
+    
+    
+    const handleChange = (event) => {
+      if (event && event.length <= 3) {
+        setSelectedTags(event);
+      }
+    };
+    
+    // use effect that listens to selected options and use a for each to add each player to the game
+    useEffect(() => {
+      selectedTags.forEach(function(player) {
+        let playerId = player.value.match("[0-9]+");
+        addPlayerToGame(game, playerId);
+      });
+    }, [selectedTags]);
 
 
   const existingGames = leadPlayer.games

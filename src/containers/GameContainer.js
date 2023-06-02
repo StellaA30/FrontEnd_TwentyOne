@@ -20,14 +20,18 @@ const GameContainer = ({ leadPlayer, game, selectedMode, firstPlayerInMultiplaye
     setUserInput(event.target.value);
   };
 
+  // Changes made to setMessage based on game mode
   const handleFormSubmit = (event) => {
     event.preventDefault();
     if(selectedMode ===  "singlePlayer"){
       updateSinglePlayerGame(game);
+      setMessage("Computer thinking...");
     } if (selectedMode === "multiPlayer"){
       updateMultiPlayerGame(game);
+      setMessage("player is thinking...");
+
     }
-    setMessage("Computer thinking...");
+    // setMessage("Computer thinking...");
   };
 
     const updateSinglePlayerGame = async () => {
