@@ -16,10 +16,11 @@
 }
 
 .form > select {
-  font-size: 16px;
+  font-size: 20px;
   text-decoration: none;
   border: 3px solid;
-  padding: 0.25em 0.5em;
+  padding: 2px 3px;
+  margin: 3px;
 }
 
 .rules > ol {

@@ -4,10 +4,11 @@ body {
   text-align: center;
   letter-spacing: 1px;
   padding-bottom: 30px;
+  font-family: 'Bebas Neue', sans-serif;
 }
 
 button {
-  font-size: 16px;
+  font-size: 20px;
   background-color: #453f3d;
   color: white;
   text-decoration: none;
@@ -15,6 +16,7 @@ button {
   border: 3px solid;
   padding: 0.25em 0.5em;
   border-radius: 15px;
+  font-family: 'Bebas Neue', sans-serif;
 }
 
 button:hover {
@@ -24,8 +26,9 @@ button:hover {
 input {
   padding: 0.25em 0.5em;
   border: 3px solid;
-  font-size: 16px;
+  font-size: 20px;
   border-radius: 15px;
+  font-family: 'Bebas Neue', sans-serif;
 }
 
 select {
@@ -33,11 +36,12 @@ select {
   margin-top: 10px;
   margin-right: 5px;
   /* border: 3px solid; */
-  font-size: 16px;
+  font-size: 20px;
   background-color:#453f3d;
   color: white;
   height: 33px;
   border-radius: 15px;
+  font-family: 'Bebas Neue', sans-serif;
 }
 
 h1 {
