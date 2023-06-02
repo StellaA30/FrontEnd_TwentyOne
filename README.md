@@ -6,6 +6,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `npm install react-select`
+
+Use `npm install react-select` to download the library needed for multiselect
+
+
 ### `npm start`
 
 Runs the app in the development mode.\
