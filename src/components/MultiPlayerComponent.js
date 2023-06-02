@@ -23,7 +23,7 @@ const MultiPlayerComponent = ({
 
   const handleChange = (event) => {
     return (
-      setSelectedTags(event[0].value), addPlayerToGame(game.id, event[0].value)
+      setSelectedTags(event[0].value), addPlayerToGame(game, event[0].value)
     );
   };
 
@@ -52,7 +52,7 @@ const MultiPlayerComponent = ({
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    startNewGame(game.id);
+    startNewGame(game);
     navigate("/gamePage");
   };
 

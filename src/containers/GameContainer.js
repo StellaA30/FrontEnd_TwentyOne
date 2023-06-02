@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const GameContainer = ({ leadPlayer, game, additionalPlayers, selectedMode }) => {
+const GameContainer = ({ leadPlayer, game, selectedMode, firstPlayerInMultiplayer }) => {
   const [userInput, setUserInput] = useState(0);
   const [counter, setCounter] = useState(0);
   const [message, setMessage] = useState("guess a number");
@@ -46,14 +46,15 @@ const GameContainer = ({ leadPlayer, game, additionalPlayers, selectedMode }) =>
     };
 
     const updateMultiPlayerGame = async () => {
-      console.log(message);
+      console.log(firstPlayerInMultiplayer);
 
-      let playerTurnId = leadPlayer.id; // random
-      // console.log(playerTurnId);
+      let playerTurnId;
       if(counter === 0){
+        playerTurnId = firstPlayerInMultiplayer;
+      }
+      if(counter !== 0){
         playerTurnId = message.match("[0-9]+")[0];
       } 
-      // this works but the first message has no numbers because the lead player is always first
 
       const response = await fetch(
         `http://localhost:8080/games/${game.id}?playerId=${playerTurnId}&guess=${userInput}`,

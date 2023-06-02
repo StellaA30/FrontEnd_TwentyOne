@@ -17,6 +17,7 @@ function App() {
   const [isNewGame, setIsNewGame] = useState(false);
   const [selectedMode, setSelectedMode] = useState(null);
   const [selectDifficulty, setSelectDifficulty] = useState(null);
+  const [firstPlayerInMultiplayer, setFirstPlayerInMultiplayer] = useState(null);
 
   // PostGame and start new game for single player
   const postGame = async (playerId, gameMode) => {
@@ -29,7 +30,13 @@ function App() {
     );
     const newGame = await response.json();
     const newGameId = newGame.message.match("[0-9]+")[0];
-    startNewGame(newGameId);
+
+    if(selectedMode === "singlePlayer"){
+      startNewGame(newGameId);
+    }
+    if(selectedMode === "multiPlayer"){
+      setGame(newGameId);
+    }
   };
 
   const startNewGame = async (gameId) => {
@@ -37,6 +44,9 @@ function App() {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
     });
+    const jsonData = await response.json()
+    const firstPlayerId = jsonData.message.match("[0-9]+")[0] 
+    setFirstPlayerInMultiplayer(firstPlayerId);
 
     // getting game object
     const activeGameResponse = await fetch(
@@ -45,6 +55,8 @@ function App() {
     const activeGame = await activeGameResponse.json();
     setGame(activeGame);
   };
+
+  console.log(firstPlayerInMultiplayer);
 
   // selects the existing game for a single player game
   const setActiveGame = (gameId) => {
@@ -175,6 +187,7 @@ function App() {
           game={game}
           additionalPlayers={additionalPlayers}
           selectedMode={selectedMode}
+          firstPlayerInMultiplayer={firstPlayerInMultiplayer}
         />
       ),
     },
