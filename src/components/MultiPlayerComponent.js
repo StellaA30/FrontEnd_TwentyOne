@@ -1,6 +1,8 @@
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
 
+// Multiplayer code
+
 const MultiPlayerComponent = ({
   leadPlayer,
   activePlayer,
