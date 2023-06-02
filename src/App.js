@@ -92,12 +92,20 @@ function App() {
   };
 
   // multiplayer method TBC
+  const handleGameType = (event) => {
+    const selectedDifficulty = event.target.value;
+    setSelectDifficulty(selectedDifficulty);
+  };
+
   const addPlayerToGame = async (gameId, playerId) => {
-    const response = await fetch(`http://localhost:8080/games/${gameId}`, {
-      method: "POST",
-      headers: { "Content-Type": "Application/json" },
-      body: JSON.stringify(playerId),
-    });
+    const response = await fetch(
+      `http://localhost:8080/games/${gameId}?playerId=${playerId}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "Application/json" },
+        body: JSON.stringify(playerId),
+      }
+    );
     const jsonData = await response.json();
     setAdditionalPlayers([...additionalPlayers, jsonData]);
   };
@@ -109,6 +117,10 @@ function App() {
         <LandingContainer
           selectedMode={selectedMode}
           setSelectedMode={setSelectedMode}
+          postGame={postGame}
+          leadPlayer={leadPlayer}
+          selectDifficulty={selectDifficulty}
+          setSelectDifficulty={setSelectDifficulty}
         />
       ),
       children: [
@@ -135,6 +147,7 @@ function App() {
           setIsNewGame={setIsNewGame}
           selectDifficulty={selectDifficulty}
           setSelectDifficulty={setSelectDifficulty}
+          handleGameType={handleGameType}
         />
       ),
     },
@@ -150,21 +163,28 @@ function App() {
           setActiveGame={setActiveGame}
           setIsNewGame={setIsNewGame}
           game={game}
-          onFormSubmit={postGame}
+          startNewGame={startNewGame}
         />
       ),
     },
     {
       path: "gamePage",
       element: (
-        <GameContainer leadPlayer={leadPlayer} game={game}/>
+        <GameContainer
+          leadPlayer={leadPlayer}
+          game={game}
+          additionalPlayers={additionalPlayers}
+          selectedMode={selectedMode}
+        />
       ),
     },
   ]);
 
   return (
     <>
-      <h1><a href="/">21 Game</a></h1>
+      <h1>
+        <a href="/">21 Game</a>
+      </h1>
       <RouterProvider router={router} />
     </>
   );

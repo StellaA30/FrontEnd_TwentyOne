@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const GameContainer = ({ leadPlayer, game }) => {
+const GameContainer = ({ leadPlayer, game, additionalPlayers, selectedMode }) => {
   const [userInput, setUserInput] = useState(0);
   const [counter, setCounter] = useState(0);
   const [message, setMessage] = useState("guess a number");
@@ -8,7 +8,6 @@ const GameContainer = ({ leadPlayer, game }) => {
 
   // checks who starts the game
   useEffect(() => {
-    console.log(game);
     if (game && game.currentTotal > 0) {
       setCounter(game.currentTotal);
     }
@@ -19,30 +18,58 @@ const GameContainer = ({ leadPlayer, game }) => {
     setUserInput(event.target.value);
   };
 
-
-
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    updateGame(game);
+    if(selectedMode ===  "singlePlayer"){
+      updateSinglePlayerGame(game);
+    } if (selectedMode === "multiPlayer"){
+      updateMultiPlayerGame(game);
+    }
     setMessage("Computer thinking...");
   };
 
-  const updateGame = async (updatedGame) => {
-    const response = await fetch(
-      `http://localhost:8080/games/${game.id}?playerId=${leadPlayer.id}&guess=${userInput}`,
-      {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-      }
-    );
-    const jsonData = await response.json();
-    console.log(jsonData);
+    const updateSinglePlayerGame = async () => {
+      const response = await fetch(
+        `http://localhost:8080/games/${game.id}?playerId=${leadPlayer.id}&guess=${userInput}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      const jsonData = await response.json();
+      console.log(jsonData);
 
-    setTimeout(() => {
-      setCounter(jsonData.gameState);
-      setMessage(jsonData.message);
-    }, 1500);
-  };
+      setTimeout(() => {
+        setCounter(jsonData.gameState);
+        setMessage(jsonData.message);
+      }, 1500);
+    };
+
+    const updateMultiPlayerGame = async () => {
+      console.log(message);
+
+      let playerTurnId = leadPlayer.id; // random
+      // console.log(playerTurnId);
+      if(counter === 0){
+        playerTurnId = message.match("[0-9]+")[0];
+      } 
+      // this works but the first message has no numbers because the lead player is always first
+
+      const response = await fetch(
+        `http://localhost:8080/games/${game.id}?playerId=${playerTurnId}&guess=${userInput}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      const jsonData = await response.json();
+      console.log(jsonData);
+
+      setTimeout(() => {
+        setCounter(jsonData.gameState);
+        setMessage(jsonData.message);
+      }, 1500);
+    };
 
   return (
     <>
