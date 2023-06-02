@@ -47,10 +47,8 @@ const GameContainer = ({ leadPlayer, game }) => {
 
   return (
     <section className="Game_page">
-      <h3> Get ready to lose </h3>
-      <h4> {leadPlayer.name} </h4>
+      <h3> Get ready to lose {leadPlayer.name}... </h3>
       <h2>{counter}</h2>
-      
       <div className="message">
       {message}
       </div>
