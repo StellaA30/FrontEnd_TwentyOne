@@ -46,6 +46,7 @@ select {
 
 h1 {
   font-size: 350%;
+  text-shadow: 5px 5px 7px rgb(124, 16, 16);
 }
 
 
