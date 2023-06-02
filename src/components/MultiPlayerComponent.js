@@ -18,7 +18,13 @@ const MultiPlayerComponent = ({
 }) => {
   const navigate = useNavigate();
 
-  const getAllOtherPlayers = activePlayer
+  // const getAllOtherPlayers = activePlayer
+  //   .filter((player) => player.id !== leadPlayer.id)
+  //   // Display player name and id
+  //   .map((player) => `Player ${player.id}: ${player.name}`);
+
+
+    const getAllOtherPlayers = activePlayer
     .filter((player) => player.id !== leadPlayer.id)
     // Display player name and id
     .map((player) => player.id);
@@ -28,6 +34,7 @@ const MultiPlayerComponent = ({
       setSelectedTags(event[0].value), addPlayerToGame(game, event[0].value)
     );
   };
+
 
   const existingGames = leadPlayer.games
     .filter(
