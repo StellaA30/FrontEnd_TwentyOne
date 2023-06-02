@@ -9,9 +9,9 @@ const GameContainer = ({ leadPlayer, game }) => {
 
   // checks who starts the game
   useEffect(() => {
-    console.log(game);
     if (game && game.currentTotal > 0) {
       setCounter(game.currentTotal);
+      setMessage("Computer played " + game.currentTotal + "! your move...")  
     }
   }, [game]);
 
