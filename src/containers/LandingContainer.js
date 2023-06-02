@@ -3,13 +3,23 @@ import { useNavigate, Outlet } from "react-router-dom";
 import "../CSSFiles/LandingContainer.css";
 import LoserBoardContainer from "./LoserBoardContainer";
 
-const LandingContainer = ({ selectedMode, setSelectedMode }) => {
+const LandingContainer = ({
+  selectedMode,
+  setSelectedMode,
+  postGame,
+  leadPlayer,
+  selectDifficulty,
+  setSelectDifficulty,
+}) => {
   const [displayButton, setDisplayButton] = useState(false);
   const navigate = useNavigate();
 
   const handleGameMode = (event) => {
     const selectedMode = event.target.value;
     setSelectedMode(selectedMode);
+    if (selectedMode === "multiPlayer") {
+      setSelectDifficulty("Multiplayer");
+    }
   };
 
   const handleFormSubmit = (event) => {
@@ -21,6 +31,7 @@ const LandingContainer = ({ selectedMode, setSelectedMode }) => {
 
     if (selectedMode === "multiPlayer") {
       playerRoute(selectedMode);
+      postGame(parseInt(leadPlayer.id), selectDifficulty);
     }
   };
 

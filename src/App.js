@@ -17,6 +17,7 @@ function App() {
   const [isNewGame, setIsNewGame] = useState(false);
   const [selectedMode, setSelectedMode] = useState(null);
   const [selectDifficulty, setSelectDifficulty] = useState(null);
+  const [firstPlayerInMultiplayer, setFirstPlayerInMultiplayer] = useState(null);
 
   // PostGame and start new game for single player
   const postGame = async (playerId, gameMode) => {
@@ -29,7 +30,13 @@ function App() {
     );
     const newGame = await response.json();
     const newGameId = newGame.message.match("[0-9]+")[0];
-    startNewGame(newGameId);
+
+    if(selectedMode === "singlePlayer"){
+      startNewGame(newGameId);
+    }
+    if(selectedMode === "multiPlayer"){
+      setGame(newGameId);
+    }
   };
 
   const startNewGame = async (gameId) => {
@@ -37,6 +44,9 @@ function App() {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
     });
+    const jsonData = await response.json()
+    const firstPlayerId = jsonData.message.match("[0-9]+")[0] 
+    setFirstPlayerInMultiplayer(firstPlayerId);
 
     // getting game object
     const activeGameResponse = await fetch(
@@ -45,6 +55,8 @@ function App() {
     const activeGame = await activeGameResponse.json();
     setGame(activeGame);
   };
+
+  console.log(firstPlayerInMultiplayer);
 
   // selects the existing game for a single player game
   const setActiveGame = (gameId) => {
@@ -92,12 +104,20 @@ function App() {
   };
 
   // multiplayer method TBC
+  const handleGameType = (event) => {
+    const selectedDifficulty = event.target.value;
+    setSelectDifficulty(selectedDifficulty);
+  };
+
   const addPlayerToGame = async (gameId, playerId) => {
-    const response = await fetch(`http://localhost:8080/games/${gameId}`, {
-      method: "POST",
-      headers: { "Content-Type": "Application/json" },
-      body: JSON.stringify(playerId),
-    });
+    const response = await fetch(
+      `http://localhost:8080/games/${gameId}?playerId=${playerId}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "Application/json" },
+        body: JSON.stringify(playerId),
+      }
+    );
     const jsonData = await response.json();
     setAdditionalPlayers([...additionalPlayers, jsonData]);
   };
@@ -109,6 +129,10 @@ function App() {
         <LandingContainer
           selectedMode={selectedMode}
           setSelectedMode={setSelectedMode}
+          postGame={postGame}
+          leadPlayer={leadPlayer}
+          selectDifficulty={selectDifficulty}
+          setSelectDifficulty={setSelectDifficulty}
         />
       ),
       children: [
@@ -135,6 +159,7 @@ function App() {
           setIsNewGame={setIsNewGame}
           selectDifficulty={selectDifficulty}
           setSelectDifficulty={setSelectDifficulty}
+          handleGameType={handleGameType}
         />
       ),
     },
@@ -150,21 +175,29 @@ function App() {
           setActiveGame={setActiveGame}
           setIsNewGame={setIsNewGame}
           game={game}
-          onFormSubmit={postGame}
+          startNewGame={startNewGame}
         />
       ),
     },
     {
       path: "gamePage",
       element: (
-        <GameContainer leadPlayer={leadPlayer} game={game}/>
+        <GameContainer
+          leadPlayer={leadPlayer}
+          game={game}
+          additionalPlayers={additionalPlayers}
+          selectedMode={selectedMode}
+          firstPlayerInMultiplayer={firstPlayerInMultiplayer}
+        />
       ),
     },
   ]);
 
   return (
     <>
-      <h1><a href="/">21 Game</a></h1>
+      <h1>
+        <a href="/">21 Game</a>
+      </h1>
       <RouterProvider router={router} />
     </>
   );
