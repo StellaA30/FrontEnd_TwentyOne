@@ -1,9 +1,7 @@
 .rules {
   background-color: #2a2727;
-  padding: 15px;
+  padding: 30px 15px;
   margin: 10px 150px 10px 150px;
-  /* margin-bottom: 10px;
-  margin-left: 100px; */
 }
 
 .rules > h4 {

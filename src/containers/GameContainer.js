@@ -4,7 +4,7 @@ import "../CSSFiles/GameContainer.css"
 const GameContainer = ({ leadPlayer, game }) => {
   const [userInput, setUserInput] = useState(0);
   const [counter, setCounter] = useState(0);
-  const [message, setMessage] = useState("guess a number");
+  const [message, setMessage] = useState("Guess a number");
   const [displayForm, setDisplayForm] = useState(true);
 
   // checks who starts the game

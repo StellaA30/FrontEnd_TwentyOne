@@ -4,6 +4,8 @@
     padding: 10px;
     margin: auto;
     padding-bottom: 20px;
+    box-shadow: 0 0 55px 15px rgb(99, 22, 22);
+        /* not sure how i feel about this */
 }
 
 .loserBoard > ol{
