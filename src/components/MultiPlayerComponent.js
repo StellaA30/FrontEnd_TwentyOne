@@ -102,9 +102,10 @@ const MultiPlayerComponent = ({
             label: player,
           }))}
           value={selectedTags}
+          placeholder="Add players to game..."
           onChange={handleChange}
           isMulti
-          closeMenuOnSelect={false}
+          closeMenuOnSelect={false} 
         />
       </form>
       <form onSubmit={handleFormSubmit}>
