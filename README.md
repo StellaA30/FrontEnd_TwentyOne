@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# Game 21 Front-End Project
+Our project involved creating a React front-end application that provides a user-friendly interface for one of the server-side APIs developed by another backend group during week 6 of the bootcamp. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with Create React App.
 
-## Available Scripts
+## Diagrams
+### WireFrame Diagram
 
-In the project directory, you can run:
+![WireFrame Diagram](https://github.com/thibyaa/FrontEnd_TwentyOne/assets/105393816/542b40c5-b847-4ebf-83d8-b668ee80b526)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Component Diagram
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![Component Diagram](https://github.com/thibyaa/FrontEnd_TwentyOne/assets/105393816/6da46d54-2e18-4968-8fb7-62499d075adb)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tech Stack
 
-### `npm run build`
+<ul>
+<li> JavaScript </li>
+<li> HTML </li>
+<li> CSS </li>
+<li> React.js (+ React Router Dom and Multiselect library </li>
+</ul>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Set Up Instructions
+### Server Side API instructions (Zaynah)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### Client-side Instructions (Fiona)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Routes (Stella)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Future
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<ol>
+<li> Log In Container to be turned into change into a modal (additional library) </li>
+<li> Players to be able to choose avatars </li>
+<li> Deployment of website </li>
+</ol>
 
-### Code Splitting
+## Collaborators 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<ul>
+<li> Zaynah Sadiq (https://github.com/Zaynah99) </li>
+<li> Stella Annor (https://github.com/StellaA30) </li>
+<li> Fiona Eshun (https://github.com/Fiona2223) </li>
+<li> Thibyaa Mahasivam (https://github.com/thibyaa) </li>
+</ul>
