@@ -26,7 +26,7 @@ This project was bootstrapped with Create React App.
 * Loserboard which displays all players who have completed the game
 * A leader play can be able include addition 3 players 
 * A coin toss when in single player mode
-* A single player being able to access the game
+* A single player being able to save and access their existing the game
 
 ### **_3. Diagram_**
 
