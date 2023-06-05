@@ -8,9 +8,7 @@
 > 3. Diagrams
 > 4. Tech Stack
 > 5. Set Up Instructions
-> 6. The API
-> 7. Challenges
-> 8. Future
+> 6. Future
 
 
 ### **_1. Project Overview_**
@@ -65,7 +63,7 @@ This project was bootstrapped with Create React App.
 
 
 
-### **_8. Future_**:
+### **_6. Future_**:
 
 <ol>
 <li> Log In Container to be turned into change into a modal (additional library) </li>
