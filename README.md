@@ -76,6 +76,8 @@ This project was bootstrapped with Create React App.
 
 <li> Zaynah Sadiq (https://github.com/Zaynah99) </li>
 <li> Stella Annor (https://github.com/StellaA30) </li>
+
 - GitHub: [Fiona Eshun](https://github.com/Fiona2223)
+
 <li> Thibyaa Mahasivam (https://github.com/thibyaa) </li>
 
