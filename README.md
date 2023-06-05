@@ -24,7 +24,25 @@ This project was bootstrapped with Create React App.
 </ul>
 
 ## Set Up Instructions
-### Server Side API instructions (Zaynah)
+### Server Side API instructions (Stella)
+The server side api can be found here:
+https://github.com/thibyaa/Backend_TwentyOne_API
+
+
+* Software needed to run the API: 
+	* IntelliJ and Java (version 17)
+	* Postman
+	* Postico
+	* PostgreSQL
+
+* Installation instructions:
+	* Git clone from the server side API Repo
+	* Create an SQL database  and name it `Backend_TwentyOne_API` so that it matches with the name in the `application.properties` file (src of server side API)
+	* Once your database has been created, run the `BackendTwentyOneApiApplication.java` file in IntelliJ to get started.
+	* You can set up your tests using Postman on `localhost:8080/{extension}` or type in `localhost:8080/games` in your browser, for example, to see the games data. More details can be found from the backend repo
+	
+
+
 
 
 
@@ -32,7 +50,7 @@ This project was bootstrapped with Create React App.
 
 
 
-## Routes (Stella)
+## Routes (Zaynah)
 
 
 
