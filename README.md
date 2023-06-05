@@ -24,7 +24,7 @@ This project was bootstrapped with Create React App.
 </ul>
 
 ## Set Up Instructions
-### Server Side API instructions (Stella)
+### Server Side API instructions
 The server side api can be found here:
 https://github.com/thibyaa/Backend_TwentyOne_API
 
