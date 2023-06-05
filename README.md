@@ -57,6 +57,11 @@ This project was bootstrapped with Create React App.
 
 ### Client-side Instructions (Fiona)
 
+-Run Application 
+
+
+
+
 
 
 ## Routes (Stella)
