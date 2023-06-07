@@ -63,7 +63,7 @@ To navigate between pages on the React app, we configured the following routes u
 
 5. Game Page: http://localhost:3000/gamePage
 
->Note: Depending on what game mode was selected, you would be taken to either a single or multiplayer page.
+>Note: Depending on what game mode is selected, you will be taken to a single or multiplayer game page.
 
 
 
