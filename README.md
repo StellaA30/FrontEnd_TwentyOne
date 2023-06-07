@@ -50,7 +50,22 @@ https://github.com/thibyaa/Backend_TwentyOne_API
 
 
 
-## Routes (Zaynah)
+## Routes 
+To navigate between pages on the React app, we configured the following routes using the React Router:
+
+Landing Page: http://localhost:3000
+
+LogIn Page: http://localhost:3000/logIn
+
+
+Depending on what game mode was selected, you would be taken to either a single or multiplayer page:
+
+Single Player Page: http://localhost:3000/singlePlayer
+
+Multiplayer Page: http://localhost:3000/multiPlayer
+
+Game Page: http://localhost:3000/gamePage
+
 
 
 
