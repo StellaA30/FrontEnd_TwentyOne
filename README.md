@@ -57,14 +57,13 @@ To navigate between pages on the React app, we configured the following routes u
 
 2. LogIn Page: http://localhost:3000/logIn
 
-
-**Note** Depending on what game mode was selected, you would be taken to either a single or multiplayer page:
-
 3. Single Player Page: http://localhost:3000/singlePlayer
 
-3. Multiplayer Page: http://localhost:3000/multiPlayer
+4. Multiplayer Page: http://localhost:3000/multiPlayer
 
-4. Game Page: http://localhost:3000/gamePage
+5. Game Page: http://localhost:3000/gamePage
+
+>Note: Depending on what game mode was selected, you would be taken to either a single or multiplayer page.
 
 
 
