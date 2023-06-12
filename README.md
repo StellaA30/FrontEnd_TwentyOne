@@ -73,11 +73,6 @@ https://github.com/thibyaa/Backend_TwentyOne_API
 ### Client-side Instructions 
 The client-side server can be obtained with the following information:
 
-Programming languages:
-* Javascript --> React JS
-* HTML 
-* CSS 
-
 * Ensure that the following software	has been downloaded:
    * Visual Studio Code
 
