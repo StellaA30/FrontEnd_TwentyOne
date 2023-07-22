@@ -112,7 +112,7 @@ To navigate between pages on the React app, we configured the following routes u
 
 ## Collaborators 
 
-- GitHub: [Zaynah Sadiq](https://github.com/Zaynah99)
+- GitHub: [Nasthasia Usoh](https://github.com/nasthasiausoh)
 - GitHub: [Stella Annor](https://github.com/StellaA30)
 - GitHub: [Fiona Eshun](https://github.com/Fiona2223)
 - GitHub: [Thibyaa Mahasivam](https://github.com/thibyaa) 
